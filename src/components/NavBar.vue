@@ -15,10 +15,10 @@
                                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                     <ul class="navbar-nav mx-auto">
                                         <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                                            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Productos</a>
+                                            <a class="nav-link" href="/products">Productos</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#">Ofertas</a>

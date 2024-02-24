@@ -34,7 +34,7 @@
     methods: {
       async fetchProducts() {
         try {
-          const response = await axios.get('http://127.0.0.1:8001/api/products');
+          const response = await axios.get('http://127.0.0.1:8001/api/productss');
           this.products = response.data['hydra:member'];
         } catch (error) {
           console.error('Error fetching products:', error);
