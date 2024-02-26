@@ -3,18 +3,19 @@
   <div class="container-fluid px-5 mt-5">
     <div v-if="loading"><span class="loader"></span></div>
     <div class="row g-4" v-if="!loading && products.length">
-      <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products" :key="product['@id']">
+      <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products"
+        :key="product['@id']">
         <div class="card">
           <img :src="product.image_url" class="card-img-top img-fluid" alt="Product Image">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">Description: {{ product.description }}</p>
             <p class="card-text">Price: {{ product.price }}</p>
-            
+
           </div>
-         <div class="text-end me-3 mb-3">
-              <button class="btn btn-warning fw-bolder">ADD TO CART</button>
-            </div> 
+          <div class="text-end me-3 mb-3">
+            <button class="btn btn-warning fw-bolder">ADD TO CART</button>
+          </div>
         </div>
       </div>
     </div>
