@@ -1,8 +1,9 @@
-<!-- App.vue -->
+<!--App.vue-->
 <template>
   <div id="app">
     <NavBar></NavBar>
-    <router-view></router-view>
+    <router-view ></router-view>
+    
   </div>
 </template>
 
@@ -11,8 +12,17 @@ import NavBar from './components/NavBar.vue';
 
 export default {
   name: 'App',
+  async mounted() {
+   await this.$store.commit('initialiseStore')
+  },
   components:{
-    NavBar, 
+    NavBar,
+    
+  },
+  data(){
+    return {
+      
+    }
   },
   
 };
