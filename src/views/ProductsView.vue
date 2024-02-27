@@ -14,7 +14,14 @@
 
           </div>
           <div class="text-end me-3 mb-3">
-            <button class="btn btn-warning fw-bolder">ADD TO CART</button>
+            <!-- <button class="btn btn-warning fw-bolder">ADD TO CART</button>  -->
+            <!-- <a href="#" @click="addToCart(item)" class="btn btn-primary"
+            >Add to cart</a
+          > -->
+            <!-- <button class="btn btn-warning fw-bolder" @click="addToCart(item)">ADD TO CART</button> -->
+            <div class="btn-group">
+              <CartBTN :product="product" />
+            </div>
           </div>
         </div>
       </div>
@@ -26,13 +33,19 @@
 <script>
 import axios from 'axios';
 import { API_ROOT_URL } from '@/apiConfig';
-
+import CartBTN from '../components/CartBTN.vue'
 export default {
   data() {
     return {
       loading: true,
       products: [],
     };
+  },
+  setup() {
+
+  },
+  components: {
+    CartBTN
   },
   mounted() {
     this.fetchProducts();
@@ -48,6 +61,9 @@ export default {
         this.loading = false;
       }
     },
+    addToCart(item) {
+      console.log(item)
+    }
   },
 };
 </script>
@@ -69,9 +85,9 @@ export default {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 </style>
-
