@@ -65,12 +65,9 @@
                     <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total</p>
                         <p class="mb-2"><i class="bi bi-currency-dollar"></i>{{ $store.state.cartTotal }}</p>
-                    </div>
-    
-                    <button type="button" class="btn btn-info btn-block btn-lg">
-                        Checkout
-                    </button>
-    
+                    </div>                      
+                        <router-link class="btn btn-info btn-block btn-lg" to="/checkout">Checkout</router-link>
+
                     </div>
                 </div>
     
