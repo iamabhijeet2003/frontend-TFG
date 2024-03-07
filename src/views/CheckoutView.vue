@@ -93,7 +93,7 @@
   async function createOrderDetails(orderDetailsData) {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://127.0.0.1:8000/api/order_detailss', orderDetailsData, {
+      await axios.post('http://127.0.0.1:8000/api/order_details', orderDetailsData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/ld+json'
