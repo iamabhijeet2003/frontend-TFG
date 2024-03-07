@@ -5,6 +5,9 @@ export default createStore({
   state: {
     cart:[],
     cartTotal:0,
+    user: null,
+    token: null,
+    isAuthenticated: false,
   },
   mutations: {
 
@@ -49,7 +52,36 @@ export default createStore({
         localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
         localStorage.setItem('cart',JSON.stringify(state.cart));
       },
+      setUser(state, user) {
+        state.user = user;
+      },
+      setToken(state, token) {
+        state.token = token;
+      },
+      setAuthentication(state, isAuthenticated) {
+        state.isAuthenticated = isAuthenticated;
+      },
   },
-  actions: {},
+  actions: {
+    checkAuthentication({ commit }) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        commit("setAuthentication", true);
+      } else {
+        commit("setAuthentication", false);
+      }
+    },
+    logout({ commit }) {
+      localStorage.removeItem('token'); // Remove token from local storage
+      commit('setToken', null); // Clear token in Vuex store
+      commit('setAuthentication', false); // Set authentication status to false
+      commit('setUser', null); // Clear user data
+    }
+  },
   modules: {},
+  getters: {
+    isLoggedIn(state) {
+      return !!state.token;
+    },
+  }
 })
