@@ -1,4 +1,5 @@
 <!-- src/components/NavBar.vue-->
+
 <template>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -57,7 +58,8 @@
                     </div>
                     <div class="offcanvas-body">
                         <div>
-                            Some text as placeholder. In real life you can have the elements you have chosen. Like, text,
+                            Some text as placeholder. In real life you can have the elements you have chosen. Like,
+                            text,
                             images, lists, etc.
                         </div>
                         <div class="dropdown mt-3">
@@ -101,28 +103,33 @@
 
                 <div class="col-lg-2 col-md-3 cart-login">
                     <div class="float-end cart">
-                            <!-- <a href="#">
+                        <!-- <a href="#">
                                 
                                 
                                 <button type="button" class="btn btn-light mt-2"><span><i class="bi bi-cart"></i>Cart</span></button>
                             </a> -->
-                             <router-link class="nav-link text-white" to="/cart">
+                        <router-link class="nav-link text-white" to="/cart">
                             <!-- <i class="fas fa-cart-shopping"></i>
                             <small class="badge badge-danger" style="font-size: 9px;">{{ cart.length }}</small> -->
                             <button type="button" class="btn btn-light mt-2">
-                                <span><i class="bi bi-cart"></i>Cart</span> 
-                                <span class="badge bg-danger text-white ms-3"></span> 
+                                <span><i class="bi bi-cart"></i>Cart</span>
+                                <span class="badge bg-danger text-white ms-3"></span>
                             </button>
                         </router-link>
-                        </div>
-                   
-                       
-                    
-
-                    <div class="float-end me-5">
-                        <button type="button" class="btn btn-light mt-2">Login</button> 
                     </div>
+
+
+
+
+                    <!-- <div class="float-end me-5">
+                        <button type="button" class="btn btn-light mt-2">Login</button> 
+                    </div> -->
+                    <div class="float-end me-5">
+                <!-- Conditionally render login or logout button based on authentication status -->
+                <router-link v-if="!isLoggedIn" to="/login" class="btn btn-light mt-2">Login</router-link>
+                <button v-else @click="handleLogout"  type="button" class="btn btn-light mt-2">Logout</button>
                 </div>
+            </div>
 
 
             </div>
@@ -131,16 +138,26 @@
 </template>
 
 <script>
-
+import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
 export default {
     data() {
         return {
-           
+
         }
     },
+    computed: {
+        ...mapGetters(['isLoggedIn']), // Map isLoggedIn getter
+    },
+    methods: {
+        ...mapActions(['checkAuthentication']), // Map checkAuthentication action
+        ...mapActions(['logout']),
+            handleLogout() {
+            this.logout(); // Call the logout action when the logout button is clicked
+            }
+    },
     created() {
-       
-    }
+        this.checkAuthentication(); // Check authentication status when the component is created
+    },
 }
 </script>
 
@@ -278,4 +295,3 @@ header [type="radio"]:not(:checked)+label {
     }
 }
 </style>
-
