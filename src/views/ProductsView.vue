@@ -6,7 +6,7 @@
       <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products"
         :key="product['@id']">
         <div class="card">
-          <img :src="product.image_url" class="card-img-top img-fluid" alt="Product Image">
+          <img :src="product.image" class="card-img-top img-fluid" alt="Product Image">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">Description: {{ product.description }}</p>
@@ -33,7 +33,8 @@
 <script>
 import axios from 'axios';
 import { API_ROOT_URL } from '@/apiConfig';
-import CartBTN from '../components/CartBTN.vue'
+import CartBTN from '../components/CartBTN.vue';
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -47,13 +48,25 @@ export default {
   components: {
     CartBTN
   },
+  computed: {
+    ...mapState(["isAuthenticated"]),
+  },
   mounted() {
     this.fetchProducts();
+    if (this.isAuthenticated) {
+      this.fetchProducts();
+    }
   },
   methods: {
     async fetchProducts() {
       try {
-        const response = await axios.get(`${API_ROOT_URL}/products`);
+        const token = localStorage.getItem('token');
+        console.log("EL TOKEN DESDE PRODUCTS:",token)
+        const response = await axios.get(`${API_ROOT_URL}/products`,{
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in request headers
+          },
+        });
         this.products = response.data['hydra:member'];
       } catch (error) {
         console.error('Error fetching products:', error);
