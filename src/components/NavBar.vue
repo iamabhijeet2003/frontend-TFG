@@ -30,12 +30,12 @@
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Liquor
+                                            Informatica
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a class="dropdown-item" href="#">Cider</a></li>
-                                            <li><a class="dropdown-item" href="#">Mead</a></li>
-                                            <li><a class="dropdown-item" href="#">Others</a></li>
+                                            <li><a class="dropdown-item" href="#">Moviles</a></li>
+                                            <li><a class="dropdown-item" href="#">Portatiles</a></li>
+                                            <li><a class="dropdown-item" href="#">Otros</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -82,11 +82,11 @@
                                     <div class="select-style">
                                         <select name="order">
                                             <option class="topshow" value="1">All</option>
-                                            <option value="a">Beer</option>
-                                            <option value="b">Wine</option>
-                                            <option value="c">Liquor</option>
-                                            <option value="d">Cider</option>
-                                            <option value="e">Mead</option>
+                                            <option value="a">Telefonia</option>
+                                            <option value="b">Electrodomesticos</option>
+                                            <option value="c">Ordenadores</option>
+                                            <option value="d">Relojes</option>
+                                            <option value="e">Fotografia</option>
                                             <option value="f">Others</option>
                                         </select>
                                     </div>
@@ -165,7 +165,7 @@ export default {
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 header {
-    background-color: #2196F3;
+    background-color: #0061b0;
     padding: 10px 15px;
 }
 
