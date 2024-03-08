@@ -8,9 +8,9 @@
         <div class="card">
           <img :src="product.image" class="card-img-top img-fluid" alt="Product Image">
           <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">Description: {{ product.description }}</p>
-            <p class="card-text">Price: {{ product.price }}</p>
+            <h5 class="card-title fw-bold h5">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="card-text fw-bold h5">{{ product.price }}€</p>
 
           </div>
           <div class="text-end me-3 mb-3">
