@@ -1,11 +1,16 @@
 <!--frontend/src/views/HomeView.vue-->
 <template>
   <ProductsView></ProductsView>
+  <div style="background-image: linear-gradient( 184.1deg,  rgba(249,255,182,1) 44.7%, rgba(226,255,172,1) 67.2% );" class="my-3">
+      <h3 class="h3 ms-5 mt-3 fw-bolder">Nuestos servicios</h3>
+    <Servicios></Servicios>
+    </div>
 </template>
   
   <script>
   
   import ProductsView from './ProductsView.vue'
+  import Servicios from '../components/partials/ServiciosComponent.vue'
   export default {
     data() {
       return {
@@ -15,6 +20,7 @@
     },
     components:{
       ProductsView,
+      Servicios
     },
     mounted() {
       
