@@ -3,13 +3,13 @@
   <div id="app">
     <NavBar></NavBar>
     <router-view ></router-view>
-    
+    <FooterPart></FooterPart>
   </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
-
+import FooterPart from './components/partials/FooterPart.vue';
 export default {
   name: 'App',
   async mounted() {
@@ -17,7 +17,7 @@ export default {
   },
   components:{
     NavBar,
-    
+    FooterPart,
   },
   data(){
     return {
