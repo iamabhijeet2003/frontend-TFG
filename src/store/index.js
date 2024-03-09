@@ -76,6 +76,7 @@ export default createStore({
       commit('setToken', null); // Clear token in Vuex store
       commit('setAuthentication', false); // Set authentication status to false
       commit('setUser', null); // Clear user data
+      location.reload(); 
     }
   },
   modules: {},
