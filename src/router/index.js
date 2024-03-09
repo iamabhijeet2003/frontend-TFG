@@ -22,23 +22,27 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
-        path:'/cart',
-        name:'Cart',
-        component:CartView,
+        path: '/cart',
+        name: 'Cart',
+        component: CartView,
         meta: { requiresAuth: true }
     },
     {
         path: '/checkout',
-        name:'Checkout',
-        component:CheckoutView,
+        name: 'Checkout',
+        component: CheckoutView,
         meta: { requiresAuth: true }
     },
     {
         path: "/login",
         name: "Login",
         component: Login,
-      },
-      
+    },
+    {
+        path: "/register",
+        name:"Register",
+        component: () => import('../views/RegisterView.vue'),
+    }
 
 ]
 
