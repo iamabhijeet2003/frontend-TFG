@@ -21,7 +21,7 @@
   
   <script>
   import axios from 'axios';
-  
+  import router from '@/router';
   export default {
     data() {
       return {
@@ -61,7 +61,7 @@
             console.log('Order detail created successfully:', orderDetailsData);
           }
   
-          // Optionally, you can redirect to a confirmation page or show a success message here
+          router.push({ name: 'OrderConfirmation', params: { orderId: orderId} });
         } catch (error) {
           console.error('Checkout process failed:', error);
           // Optionally, you can show an error message to the user
@@ -93,7 +93,7 @@
   async function createOrderDetails(orderDetailsData) {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://127.0.0.1:8000/api/order_details', orderDetailsData, {
+      await axios.post('http://127.0.0.1:8000/api/order_detailss', orderDetailsData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/ld+json'
