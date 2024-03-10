@@ -101,35 +101,22 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-md-3 cart-login">
-                    <div class="float-end cart">
-                        <!-- <a href="#">
-                                
-                                
-                                <button type="button" class="btn btn-light mt-2"><span><i class="bi bi-cart"></i>Cart</span></button>
-                            </a> -->
-                        <router-link class="nav-link text-white" to="/cart">
-                            <!-- <i class="fas fa-cart-shopping"></i>
-                            <small class="badge badge-danger" style="font-size: 9px;">{{ cart.length }}</small> -->
-                            <button type="button" class="btn btn-light mt-2">
-                                <span><i class="bi bi-cart"></i>Cart</span>
-                                <span class="badge bg-danger text-white ms-3"></span>
-                            </button>
-                        </router-link>
+                <div class="col-lg-2 col-md-3 cart-login d-flex align-items-center justify-content-end">
+                    <router-link class="nav-link text-white me-2" to="/cart">
+                        <button type="button" class="btn btn-light">
+                            <span><i class="bi bi-cart"></i>Cart</span>
+                            <span class="badge bg-danger text-white ms-3"></span>
+                        </button>
+                    </router-link>
+
+                    <router-link to="/contact" class="link bg-white btn me-2">Contact</router-link>
+
+                    <div class="float-end">
+                        <router-link v-if="!isLoggedIn" to="/login" class="btn btn-light">Login</router-link>
+                        <button v-else @click="handleLogout" type="button" class="btn btn-light">Logout</button>
                     </div>
-
-
-
-
-                    <!-- <div class="float-end me-5">
-                        <button type="button" class="btn btn-light mt-2">Login</button> 
-                    </div> -->
-                    <div class="float-end me-5">
-                <!-- Conditionally render login or logout button based on authentication status -->
-                <router-link v-if="!isLoggedIn" to="/login" class="btn btn-light mt-2">Login</router-link>
-                <button v-else @click="handleLogout"  type="button" class="btn btn-light mt-2">Logout</button>
                 </div>
-            </div>
+
 
 
             </div>
@@ -151,9 +138,9 @@ export default {
     methods: {
         ...mapActions(['checkAuthentication']), // Map checkAuthentication action
         ...mapActions(['logout']),
-            handleLogout() {
+        handleLogout() {
             this.logout(); // Call the logout action when the logout button is clicked
-            }
+        }
     },
     created() {
         this.checkAuthentication(); // Check authentication status when the component is created
@@ -229,7 +216,7 @@ header .cart a {
 
 header .cart {
     position: relative;
-    left: -15px;
+    left: -5px;
 }
 
 header .cart a span.number {
