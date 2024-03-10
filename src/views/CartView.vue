@@ -25,7 +25,7 @@
                         <div class="d-flex flex-row align-items-center">
                             <div>
                                 <img
-                                :src="item.image_url"
+                                :src="item.image"
                                 class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
                             </div>
                             <div class="ms-3">
