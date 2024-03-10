@@ -13,7 +13,8 @@
             <div class="inp">
                 <label for="pwd" class="form-label text-black">Password <i
             class="bi bi-lock-fill text-primary fs-5"></i></label>
-                <input v-model="formData.plainPassword" placeholder="Password" id="pwd" type="password" class="input form-control" />
+                <input v-model="formData.plainPassword" placeholder="Password" id="pwd" type="password" class="input form-control text-black" />
+                <passwordMeter :password="formData.plainPassword" class="mt-2"></passwordMeter>
             </div>
             
             <button type="submit" class="btn btn-primary btn-lg mt-3 px-5">Register</button>
@@ -39,14 +40,17 @@
 
 <script>
 import axios from 'axios';
+import passwordMeter from "vue-simple-password-meter";
 
 export default {
+    components:{
+        passwordMeter 
+    },
     data() {
         return {
             formData: {
                 email: "",
                 plainPassword: "",
-                
             },
             message: '', // Mensaje de éxito o error
             messageClass: '', // Clase de Bootstrap para el mensaje
