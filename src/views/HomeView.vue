@@ -15,6 +15,10 @@
     <Servicios></Servicios>
     </div>
 
+    <div>
+      <PaymentMethods></PaymentMethods>
+    </div>
+
 </template>
   
   <script>
@@ -22,6 +26,7 @@
   import ProductsView from './ProductsView.vue'
   import Servicios from '../components/partials/ServiciosComponent.vue'
   import TestimoniosClientes from '../components/partials/TestimoniosClientes.vue'
+  import PaymentMethods from '@/components/partials/PaymentMethods.vue'
   export default {
     data() {
       return {
@@ -32,7 +37,8 @@
     components:{
       ProductsView,
       Servicios,
-      TestimoniosClientes
+      TestimoniosClientes,
+      PaymentMethods
     },
     mounted() {
       
