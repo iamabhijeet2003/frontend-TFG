@@ -7,6 +7,7 @@ import CheckoutView from '../views/CheckoutView.vue';
 import Login from "../views/LoginView.vue";
 //import store from '../store/';
 import { authMiddleware } from '../middleware/auth.js';
+import ContactForm from '../views/ContactForm.vue';
 
 const routes = [
     {
@@ -42,7 +43,18 @@ const routes = [
         path: "/register",
         name:"Register",
         component: () => import('../views/RegisterView.vue'),
-    }
+    },
+    {
+        path: '/order-confirmation/:orderId', // Dynamic segment for order ID
+        name: 'OrderConfirmation',
+        component: () => import('../views/OrderConfirmationView.vue')
+      },
+      {
+        path: '/contact',
+        name: 'contact',
+        component: ContactForm,
+      }
+
 
 ]
 
