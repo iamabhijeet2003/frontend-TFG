@@ -8,7 +8,7 @@ import Login from "../views/LoginView.vue";
 //import store from '../store/';
 import { authMiddleware } from '../middleware/auth.js';
 import ContactForm from '../views/ContactForm.vue';
-
+import PoliticaPrivacidad from '@/components/politicas/PoliticaPrivacidad.vue';
 const routes = [
     {
         path: '/',
@@ -41,19 +41,24 @@ const routes = [
     },
     {
         path: "/register",
-        name:"Register",
+        name: "Register",
         component: () => import('../views/RegisterView.vue'),
     },
     {
         path: '/order-confirmation/:orderId', // Dynamic segment for order ID
         name: 'OrderConfirmation',
         component: () => import('../views/OrderConfirmationView.vue')
-      },
-      {
+    },
+    {
         path: '/contact',
         name: 'contact',
         component: ContactForm,
-      }
+    },
+    {
+        path: '/politicas/politica-privacidad',
+        name:"politica-privacidad",
+        component:PoliticaPrivacidad
+    }
 
 
 ]
