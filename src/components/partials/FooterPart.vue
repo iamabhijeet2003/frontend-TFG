@@ -75,6 +75,25 @@
               </p>
             </div>
 
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">
+                Politicas
+              </h6>
+              <p>
+                <router-link to="/politicas/politica-privacidad" class="text-white">Politica de privacidad</router-link>
+                
+              </p>
+              <p>
+                <a class="text-white">Become an Affiliate</a>
+              </p>
+              <p>
+                <a class="text-white">Shipping Rates</a>
+              </p>
+              <p>
+                <a class="text-white">Ayuda</a>
+              </p>
+            </div>
+
             <!-- Grid column -->
             <hr class="w-100 clearfix d-md-none" />
 
