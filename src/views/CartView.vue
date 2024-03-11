@@ -39,10 +39,10 @@
                         </div>
                         <div class="d-flex flex-row align-items-center">
                             <div >
-                                <h5 class="mb-0"><i class="bi bi-currency-dollar"></i>{{ item.price*item.qty }}</h5>
-                                <small v-if="item.hasDiscount" class="text-muted text-decoration-line-through"><i class="bi bi-currency-dollar"></i>{{ item.price}}</small>
+                                <h5 class="mb-0">{{ item.price*item.qty }}<i class="bi bi-currency-euro"></i></h5>
+                                <small v-if="item.hasDiscount" class="text-muted text-decoration-line-through"><i class="bi bi-currency-euro"></i>{{ item.price}}</small>
                             </div>
-                            <a role="button" @click="removeItem(item)" class="ms-4" style="color: #cecece;"><i class="bi bi-trash3 h4"></i></a>
+                            <a role="button" @click="removeItem(item)" class="ms-4" style="color: #cecece;"><i class="bi bi-trash3 h4 text-danger"></i></a>
                         </div>
                     </div>
                     </div>
@@ -51,22 +51,24 @@
                 </div>
                 <div class="col-lg-5">
     
-                <div class="card bg-primary text-white rounded-0 border-0">
+                <div class="card bg-primary text-white rounded-4 border-0">
                     <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Cart details</h5>
+                        <h5 class="mb-0 h4">Cart details</h5>
                         <i class="bi bi-cart3 h1"></i>
                     </div>
-                    <hr class="my-4">
+                    <hr class="my-4 border-4 text-white">
                     <div class="d-flex justify-content-between">
-                        <p class="mb-2">Subtotal</p>
-                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>{{ $store.state.cartTotal }}</p>
+                        <p class="mb-2 h5">Subtotal</p>
+                        <p class="mb-2 h5">{{ $store.state.cartTotal }}<i class="bi bi-currency-euro"></i></p>
                     </div>
                     <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total</p>
-                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>{{ $store.state.cartTotal }}</p>
+                        <p class="mb-2 h4">Total</p>
+                        <p class="mb-2 h5">{{ $store.state.cartTotal }}<i class="bi bi-currency-euro"></i></p>
                     </div>                      
-                        <router-link class="btn btn-info btn-block btn-lg" to="/checkout">Checkout</router-link>
+                        <router-link class="btn btn-info btn-block btn-lg" to="/checkout">
+                            Checkout
+                        </router-link>
 
                     </div>
                 </div>
