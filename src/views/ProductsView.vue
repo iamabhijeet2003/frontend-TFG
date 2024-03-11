@@ -5,11 +5,12 @@
     <div class="row g-4" v-if="!loading && products.length">
       <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products"
         :key="product['@id']">
-        <div class="card">
+        <div class="card border border-3">
           <img :src="product.image" class="card-img-top img-fluid" alt="Product Image">
           <div class="card-body">
-            <h5 class="card-title fw-bold h5">{{ product.name }}</h5>
-            <p class="card-text">{{ product.description }}</p>
+            <h5 class="card-title fw-bold h5 text-center">{{ product.name }}</h5>
+            <!-- <p class="card-text">{{ product.description }}</p> -->
+            <hr>
             <p class="card-text fw-bold h5">{{ product.price }}€</p>
 
           </div>
