@@ -1,14 +1,20 @@
 <!--frontend/src/views/ProductsView.vue-->
 <template>
   <div class="container-fluid px-5 mt-5">
-    <div class="btn-group mb-3">
-      <button @click="sortByPrice('asc')" class="btn btn-sm btn-primary">Sort by Price (Asc)</button>
-      <button @click="sortByPrice('desc')" class="btn btn-sm btn-primary">Sort by Price (Desc)</button>
-    </div>
-    <!-- Sort buttons for name -->
-    <div class="btn-group mb-3">
-      <button @click="sortByName('asc')" class="btn btn-sm btn-primary">Sort by Name (Asc)</button>
-      <button @click="sortByName('desc')" class="btn btn-sm btn-primary">Sort by Name (Desc)</button>
+     <!-- Dropdown button for sorting by price -->
+     <div class="dropdown mb-3">
+      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="priceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-filter fs-5">Order By</i>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="priceDropdown">
+        <li><button @click="sortByPrice('asc')" class="dropdown-item"><i class="bi bi-arrow-bar-up fs-4"></i>Lower Price</button></li>
+        
+        <li><button @click="sortByPrice('desc')" class="dropdown-item"><i class="bi bi-arrow-bar-down fs-4"></i>Higher Price</button></li>
+        
+        <li><button @click="sortByName('asc')" class="dropdown-item"><i class="bi bi-sort-alpha-down fs-4"></i>Name [A-Z]</button></li>
+       
+        <li><button @click="sortByName('desc')" class="dropdown-item"><i class="bi bi-sort-alpha-down-alt fs-4"></i>Name [Z-A]</button></li>
+      </ul>
     </div>
     <div v-if="loading"><span class="loader"></span></div>
     <div class="row g-4" v-if="!loading && products.length">
