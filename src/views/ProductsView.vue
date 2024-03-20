@@ -1,6 +1,15 @@
 <!--frontend/src/views/ProductsView.vue-->
 <template>
   <div class="container-fluid px-5 mt-5">
+    <div class="btn-group mb-3">
+      <button @click="sortByPrice('asc')" class="btn btn-sm btn-primary">Sort by Price (Asc)</button>
+      <button @click="sortByPrice('desc')" class="btn btn-sm btn-primary">Sort by Price (Desc)</button>
+    </div>
+    <!-- Sort buttons for name -->
+    <div class="btn-group mb-3">
+      <button @click="sortByName('asc')" class="btn btn-sm btn-primary">Sort by Name (Asc)</button>
+      <button @click="sortByName('desc')" class="btn btn-sm btn-primary">Sort by Name (Desc)</button>
+    </div>
     <div v-if="loading"><span class="loader"></span></div>
     <div class="row g-4" v-if="!loading && products.length">
       <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products"
@@ -62,7 +71,7 @@ export default {
     async fetchProducts() {
       try {
         const token = localStorage.getItem('token');
-        console.log("EL TOKEN DESDE PRODUCTS:",token)
+        //console.log("EL TOKEN DESDE PRODUCTS:",token)
         const response = await axios.get(`${API_ROOT_URL}/products`,{
           headers: {
             Authorization: `Bearer ${token}`, // Include token in request headers
@@ -77,7 +86,41 @@ export default {
     },
     addToCart(item) {
       console.log(item)
-    }
+    },
+    async sortByPrice(order) {
+      // Set loading to true while fetching data
+      this.loading = true;
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${API_ROOT_URL}/products?order[price]=${order}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in request headers
+          },
+        });
+        this.products = response.data['hydra:member'];
+      } catch (error) {
+        console.error('Error fetching sorted products:', error);
+      } finally {
+        // Set loading to false after fetching data
+        this.loading = false;
+      }
+    },
+    async sortByName(order) {
+      this.loading = true;
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${API_ROOT_URL}/products?order[name]=${order}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in request headers
+          },
+        });
+        this.products = response.data['hydra:member'];
+      } catch (error) {
+        console.error('Error fetching sorted products:', error);
+      } finally {
+        this.loading = false;
+      }
+    },
   },
 };
 </script>
