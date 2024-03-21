@@ -90,13 +90,17 @@
                                             <option value="f">Others</option>
                                         </select>
                                     </div>
-                                    <input type="text" name="search" id="search" class="form-control"
-                                        placeholder="Search Here" />
+                                    <!-- search input-->
+                                    <!-- <input v-model="searchQuery" type="text" name="search" id="search" class="form-control"
+                                        placeholder="Search Here" /> -->
+                                        <!-- <ProductSearch /> -->
                                     <div class="input-group-addon">
                                         <button type="submit"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
+
+
                         </div>
                     </div>
                 </div>
@@ -122,15 +126,22 @@
             </div>
         </div>
     </header>
+    <ProductSearch />
 </template>
 
 <script>
+import axios from 'axios';
 import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
+import ProductSearch from '@/components/product/ProductSearch'; // Import ProductSearch component
+
 export default {
     data() {
         return {
-
+            searchQuery: '',
         }
+    },
+    components: {
+        ProductSearch, // Register the ProductSearch component
     },
     computed: {
         ...mapGetters(['isLoggedIn']), // Map isLoggedIn getter
@@ -140,12 +151,27 @@ export default {
         ...mapActions(['logout']),
         handleLogout() {
             this.logout(); // Call the logout action when the logout button is clicked
-        }
+        },
+        async searchProducts() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get(`http://localhost:8000/api/products?name=${this.searchQuery}`,{
+                    headers:{
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+                // Handle the response, e.g., update product list with search results
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error searching products:', error);
+            }
+        },
     },
     created() {
         this.checkAuthentication(); // Check authentication status when the component is created
     },
 }
+
 </script>
 
 <style scoped>
