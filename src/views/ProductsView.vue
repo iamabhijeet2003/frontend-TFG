@@ -1,20 +1,34 @@
 <!--frontend/src/views/ProductsView.vue-->
 <template>
   <div class="container-fluid px-5 mt-5">
-     <!-- Dropdown button for sorting by price -->
-     <div class="dropdown mb-3">
-      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="priceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="bi bi-filter fs-5">Order By</i>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="priceDropdown">
-        <li><button @click="sortByPrice('asc')" class="dropdown-item"><i class="bi bi-arrow-bar-up fs-4"></i>Lower Price</button></li>
-        
-        <li><button @click="sortByPrice('desc')" class="dropdown-item"><i class="bi bi-arrow-bar-down fs-4"></i>Higher Price</button></li>
-        
-        <li><button @click="sortByName('asc')" class="dropdown-item"><i class="bi bi-sort-alpha-down fs-4"></i>Name [A-Z]</button></li>
-       
-        <li><button @click="sortByName('desc')" class="dropdown-item"><i class="bi bi-sort-alpha-down-alt fs-4"></i>Name [Z-A]</button></li>
-      </ul>
+    <div class="row">
+      <div class="col">
+        <!-- Dropdown button for sorting by price -->
+        <div class="dropdown mb-3">
+          <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="priceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-filter fs-5">Order By</i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="priceDropdown">
+            <li><button @click="sortByPrice('asc')" class="dropdown-item"><i class="bi bi-arrow-bar-up fs-4"></i>Lower Price</button></li>
+            <li><button @click="sortByPrice('desc')" class="dropdown-item"><i class="bi bi-arrow-bar-down fs-4"></i>Higher Price</button></li>
+            <li><button @click="sortByName('asc')" class="dropdown-item"><i class="bi bi-sort-alpha-down fs-4"></i>Name [A-Z]</button></li>
+            <li><button @click="sortByName('desc')" class="dropdown-item"><i class="bi bi-sort-alpha-down-alt fs-4"></i>Name [Z-A]</button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <!-- Dropdown button for filtering by category -->
+        <div class="dropdown mb-3">
+          <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-filter fs-5">Filter By Category</i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+            <li v-for="category in categories" :key="category.id">
+              <button @click="filterByCategory(category.id)" class="dropdown-item">{{ category.name }}</button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div v-if="loading"><span class="loader"></span></div>
     <div class="row g-4" v-if="!loading && products.length">
@@ -56,6 +70,7 @@ export default {
     return {
       loading: true,
       products: [],
+      categories: [], // for the filter
     };
   },
   setup() {
@@ -72,6 +87,7 @@ export default {
     if (this.isAuthenticated) {
       this.fetchProducts();
     }
+    this.fetchCategories();
   },
   methods: {
     async fetchProducts() {
@@ -125,6 +141,35 @@ export default {
         console.error('Error fetching sorted products:', error);
       } finally {
         this.loading = false;
+      }
+    },
+    async filterByCategory(categoryId) {
+      this.loading = true;
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${API_ROOT_URL}/products?category=${categoryId}`, { // Filter products by category
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in request headers
+          },
+        });
+        this.products = response.data['hydra:member'];
+      } catch (error) {
+        console.error('Error filtering products by category:', error);
+      } finally {
+        this.loading = false;
+      }
+    },
+    async fetchCategories() {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${API_ROOT_URL}/categories`, { // Assuming you have an endpoint to fetch categories
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in request headers
+          },
+        });
+        this.categories = response.data['hydra:member'];
+      } catch (error) {
+        console.error('Error fetching categories:', error);
       }
     },
   },
