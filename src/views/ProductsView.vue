@@ -34,13 +34,13 @@
     <div class="row g-4" v-if="!loading && products.length">
       <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products"
         :key="product['@id']">
-        <div class="card border border-3">
-          <img :src="product.image" class="card-img-top img-fluid" alt="Product Image">
+        <div class="card border border-3" >
+          <img :src="product.image" class="card-img-top img-fluid" alt="Product Image" @click="viewProduct(product)">
           <div class="card-body">
-            <h5 class="card-title fw-bold h5 text-center">{{ product.name }}</h5>
+            <h5 class="card-title fw-bold h5 text-center" @click="viewProduct(product)">{{ product.name }}</h5>
             <!-- <p class="card-text">{{ product.description }}</p> -->
             <hr>
-            <p class="card-text fw-bold h5">{{ product.price }}€</p>
+            <p class="card-text fw-bold h5" @click="viewProduct(product)">{{ product.price }}€</p>
 
           </div>
           <div class="text-end me-3 mb-3">
@@ -57,7 +57,26 @@
       </div>
     </div>
     <div v-if="!loading && !products.length">No products available</div>
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination pagination-lg justify-content-center mt-5 mb-1">
+        <li class="page-item" :class="{ disabled: currentPage === 1 }">
+          <button class="page-link" @click="fetchProducts(currentPage - 1)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </button>
+        </li>
+        <li v-for="page in totalPages" :key="page" class="page-item" :class="{ active: page === currentPage }">
+          <button class="page-link" @click="fetchProducts(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+          <button class="page-link" @click="fetchProducts(currentPage + 1)" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
+
 </template>
 
 <script>
@@ -90,16 +109,17 @@ export default {
     this.fetchCategories();
   },
   methods: {
-    async fetchProducts() {
+    async fetchProducts(page = 1) {
       try {
         const token = localStorage.getItem('token');
-        //console.log("EL TOKEN DESDE PRODUCTS:",token)
-        const response = await axios.get(`${API_ROOT_URL}/products`,{
+        const response = await axios.get(`${API_ROOT_URL}/products?page=${page}`, {
           headers: {
-            Authorization: `Bearer ${token}`, // Include token in request headers
+            Authorization: `Bearer ${token}`,
           },
         });
         this.products = response.data['hydra:member'];
+        this.currentPage = page;
+        this.totalPages = Math.ceil(response.data['hydra:totalItems'] / 10); // the api returns 10 products per page
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {
@@ -171,6 +191,9 @@ export default {
       } catch (error) {
         console.error('Error fetching categories:', error);
       }
+    },
+    viewProduct(product) {
+      this.$router.push({ name: 'Product', params: { id: product.id } });
     },
   },
 };
