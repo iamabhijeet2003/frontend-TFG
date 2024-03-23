@@ -1,8 +1,6 @@
 <!--frontend/src/views/HomeView.vue-->
 <template>
-  <ProductsView></ProductsView>
   
-
     <div>
       <h2 class="h2 text-center py-3 my-5 text-white fw-bolder" style="background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgba(0,8,120,1) 0%, rgba(95,184,224,1) 99.7% );">Lo que opinan sobre nosotros: </h2>
       <TestimoniosClientes></TestimoniosClientes>
@@ -23,7 +21,6 @@
   
   <script>
   
-  import ProductsView from './ProductsView.vue'
   import Servicios from '../components/partials/ServiciosComponent.vue'
   import TestimoniosClientes from '../components/partials/TestimoniosClientes.vue'
   import PaymentMethods from '@/components/partials/PaymentMethods.vue'
@@ -35,7 +32,6 @@
       };
     },
     components:{
-      ProductsView,
       Servicios,
       TestimoniosClientes,
       PaymentMethods
