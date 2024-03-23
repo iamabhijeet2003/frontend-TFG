@@ -74,6 +74,7 @@
                         </div>
                     </div>
                 </div>
+                <!--
                 <div class="col-lg-4 col-md-3">
                     <div class="header-search mt-2">
                         <div class="search-form">
@@ -89,12 +90,12 @@
                                             <option value="e">Fotografia</option>
                                             <option value="f">Others</option>
                                         </select>
-                                    </div>
+                                    </div>-->
                                     <!-- search input-->
                                     <!-- <input v-model="searchQuery" type="text" name="search" id="search" class="form-control"
                                         placeholder="Search Here" /> -->
                                         <!-- <ProductSearch /> -->
-                                    <div class="input-group-addon">
+                                    <!--<div class="input-group-addon">
                                         <button type="submit"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
@@ -103,7 +104,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="col-lg-2 col-md-3 cart-login d-flex align-items-center justify-content-end">
                     <router-link class="nav-link text-white me-2" to="/cart">
@@ -115,10 +116,12 @@
 
                     <router-link to="/contact" class="link bg-white btn me-2">Contact</router-link>
 
+                    <KeepAlive>
                     <div class="float-end">
                         <router-link v-if="!isLoggedIn" to="/login" class="btn btn-light">Login</router-link>
                         <button v-else @click="handleLogout" type="button" class="btn btn-light">Logout</button>
                     </div>
+                </KeepAlive>
                 </div>
 
 
