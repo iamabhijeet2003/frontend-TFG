@@ -3,26 +3,26 @@
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
 
-            <router-link  class="navbar-brand text-white" to="/">Abhi's</router-link>
+            <router-link  class="navbar-brand text-white fs-2 fw-bold" to="/">Abhi's</router-link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="/">Inicio</a>
+                        <a class="nav-link active text-white fs-4" aria-current="page" href="/">Inicio</a>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/products">Productos</a>
+                        <a class="nav-link text-white fs-4" href="/products">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Ofertas</a>
+                        <a class="nav-link text-white fs-4" href="#">Ofertas</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle text-white fs-4" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Marcas
                         </a>
@@ -35,10 +35,13 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white">Ver todo...</a>
+                    <li class="nav-item ">
+                        <a class="nav-link text-white fs-4">Ver todo...</a>
                     </li>
                 </ul>
+                <div>
+                    <ProductSearch></ProductSearch>
+                </div>
                 <hr>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -65,7 +68,7 @@
             </div>
         </div>
     </nav>
-    <ProductSearch></ProductSearch>
+    
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
