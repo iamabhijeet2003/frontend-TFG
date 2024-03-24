@@ -1,6 +1,19 @@
 <template>
-    <div class="product-search">
-      <input type="text" v-model="searchQuery" @input="handleInput" placeholder="Search products...">
+<!-- Form to trigger modal -->
+<form type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    </form>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="product-search">
+      <input type="text" v-model="searchQuery" @input="handleInput" placeholder="Search products..." class="container-fluid border">
       <ul v-if="searchResults.length">
         <li v-for="product in searchResults" :key="product.id">
           <div class="product">
@@ -17,6 +30,14 @@
         </li>
       </ul>
     </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
   </template>
   
   <script>
