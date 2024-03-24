@@ -26,14 +26,15 @@
                   <img :src="product.image" alt="Product Image">
                   <div class="product-details">
                     <h3>{{ product.name }}</h3>
-                    <p>{{ product.description }}</p>
-                    <p>Price: ${{ product.price }}</p>
+                    <p>Price: {{ product.price }}€</p>
                     <div class="btn-group">
                       <CartBTN :product="product" />
                     </div>
                   </div>
                 </div>
+                <hr>
               </li>
+              
             </ul>
           </div>
         </div>
