@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ntohq/buefy-next": "^0.1.2",
+    "@vue-stripe/vue-stripe": "^4.5.0",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
@@ -27,11 +28,16 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@stripe/stripe-js": "^3.1.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "autoprefixer": "^10.4.19",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint-plugin-vue": "^8.0.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "vue-stripe-js": "^1.0.2"
   },
   "eslintConfig": {
     "root": true,
