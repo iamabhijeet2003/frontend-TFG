@@ -2,7 +2,7 @@
     <section class="tw-bg-white tw-dark:bg-gray-900">
         <div class="tw-grid tw-max-w-screen-xl tw-px-4 tw-py-8 tw-mx-auto lg:tw-gap-8 xl:tw-gap-0 lg:tw-py-16 lg:tw-grid-cols-12">
             <div class="tw-mr-auto tw-place-self-center lg:tw-col-span-7">
-                <h1 class="tw-max-w-2xl tw-mb-4 tw-text-4xl tw-font-extrabold tw-tracking-tight tw-leading-none md:tw-text-5xl xl:tw-text-6xl tw-dark:text-white">Explore the latest samsung products</h1>
+                <h1 class="tw-max-w-2xl tw-mb-4 tw-text-4xl tw-font-extrabold tw-tracking-tight tw-leading-none md:tw-text-5xl xl:tw-text-6xl tw-dark:text-white">Explore the latest Samsung products</h1>
                 <p class="tw-max-w-2xl tw-mb-6 tw-font-light tw-text-gray-500 lg:tw-mb-8 md:tw-text-lg lg:tw-text-xl tw-dark:text-gray-400">Discover the newest offerings from Samsung and stay ahead with cutting-edge technology.</p>
                 <a href="/products/samsung" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-mr-3 tw-text-base tw-font-medium tw-text-center tw-text-black tw-rounded-lg tw-bg-primary-700 tw-hover:bg-primary-800 tw-focus:tw-ring-4 tw-focus:tw-ring-primary-300 tw-dark:focus:tw-ring-primary-900">
                     Explore Now
@@ -11,7 +11,7 @@
               
             </div>
             <div class="tw-hidden lg:tw-mt-0 lg:tw-col-span-5 lg:tw-flex">
-                <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup">
+                <img src="https://images.samsung.com/is/image/samsung/p6pim/es/2401/gallery/es-galaxy-s24-s928-491123-sm-s928bztheub-539444345?$684_547_JPG$" alt="mockup">
             </div>                
         </div>
     </section>
