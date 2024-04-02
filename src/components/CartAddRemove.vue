@@ -1,9 +1,9 @@
 <!--frontend/src/components/CartAddRemove.vue-->
 <template>
     <div v-if="product" class="input-group plus-minus">
-        <button class="btn btn-outline-danger" :class="loading?'disabled':''" @click="addOrRemove(-1)" type="button" id="button-addon1"><i class="bi bi-dash-lg text-danger"></i></button>
+        <button class="btn btn-outline-danger" :class="loading?'disabled':''" @click="addOrRemove(-1)" type="button" id="button-addon1" aria-label="subract from cart" ><i class="bi bi-dash-lg text-danger"></i></button>
             <input type="number" v-model="qty" disabled class="form-control form-control-sm fw-bolder text-center fs-5" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-        <button class="btn btn-outline-primary" :class="loading?'disabled':''" @click="addOrRemove(1)" type="button" id="button-addon1"><i class="bi bi-plus-lg text-primary"></i></button>
+        <button class="btn btn-outline-primary" :class="loading?'disabled':''" @click="addOrRemove(1)" type="button" id="button-addon1"><i class="bi bi-plus-lg text-primary" aria-label="Add to cart" ></i></button>
     </div>
  </template>
  
