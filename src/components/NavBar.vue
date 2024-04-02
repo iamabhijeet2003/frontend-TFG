@@ -3,7 +3,10 @@
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
 
-            <router-link  class="navbar-brand text-white fs-2 fw-bold" to="/">Abhi's</router-link>
+            <router-link class="navbar-brand text-white fs-2 fw-bold" to="/">Abhi's</router-link>
+            <!-- <a class="navbar-brand" href="#">
+                <img src="https://res.cloudinary.com/dcm40dfr5/image/upload/f_auto,q_auto/v1/TFC/zjak88rub2xtxdoebual" alt="logo" width="70">
+            </a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -22,8 +25,8 @@
                         <a class="nav-link text-white fs-4" href="#">Ofertas</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white fs-4" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white fs-4" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Marcas
                         </a>
                         <ul class="dropdown-menu">
@@ -52,15 +55,19 @@
                             </VaAvatar>
 
                         </router-link>
-                    </li> 
+                    </li>
                     <div class="vr"></div>
                     <li class="nav-item">
                         <KeepAlive>
-                        <router-link v-if="!isLoggedIn" to="/login" class="nav-link text-white me-2"><VaAvatar class="mr-6" color="#fff">
-                                <span><i class="bi bi-person fs-3 text-primary"></i></span>
-                                <span class="badge bg-danger text-white ms-3"></span>
-                            </VaAvatar></router-link>
-                            <div v-else @click="handleLogout" class="nav-link text-white me-2"><VaAvatar class="mr-6" color="#fff"><i class="bi bi-box-arrow-right fs-3 text-primary"></i></VaAvatar>
+                            <router-link v-if="!isLoggedIn" to="/login" class="nav-link text-white me-2">
+                                <VaAvatar class="mr-6" color="#fff">
+                                    <span><i class="bi bi-person fs-3 text-primary"></i></span>
+                                    <span class="badge bg-danger text-white ms-3"></span>
+                                </VaAvatar>
+                            </router-link>
+                            <div v-else @click="handleLogout" class="nav-link text-white me-2">
+                                <VaAvatar class="mr-6" color="#fff"><i
+                                        class="bi bi-box-arrow-right fs-3 text-primary"></i></VaAvatar>
                             </div>
                         </KeepAlive>
                     </li>
@@ -68,7 +75,7 @@
             </div>
         </div>
     </nav>
-    
+
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
@@ -77,7 +84,7 @@ import ProductSearch from '@/components/product/ProductSearch'; // Import Produc
 export default {
     data() {
         return {
-          
+
         }
     },
     components: {
@@ -100,6 +107,4 @@ export default {
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
