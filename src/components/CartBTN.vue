@@ -1,6 +1,6 @@
 <!--frontend/src/components/CartBTN.vue-->
 <template>
-    <button type="button" @click="addOrRemove()" class="cart-btn btn btn-sm btn-outline-secondary me-2">
+    <button type="button" @click="addOrRemove()" class="cart-btn btn btn-sm btn-outline-secondary me-2" aria-label="Add to Cart">
     <i :class="toAdd?'bi bi-cart h5':'bi bi-cart-check h5'"></i>
     </button> 
      <CartAddRemove v-if="!toAdd" :product="item"/>
