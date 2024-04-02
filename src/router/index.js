@@ -1,14 +1,11 @@
 // frontend/src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ProductsView from '../views/ProductsView.vue'
-import CartView from '../views/CartView.vue'
-import CheckoutView from '../views/CheckoutView.vue';
-import Login from "../views/LoginView.vue";
 //import store from '../store/';
 import { authMiddleware } from '../middleware/auth.js';
-import ContactForm from '../views/ContactForm.vue';
-import PoliticaPrivacidad from '@/components/politicas/PoliticaPrivacidad.vue';
+import UserOrders from '../views/UserOrders.vue';
+import ProductSearch from '@/components/product/ProductSearch.vue';
+import CardPayment from '@/components/payment/CardPayment.vue';
 const routes = [
     {
         path: '/',
@@ -19,25 +16,37 @@ const routes = [
     {
         path: '/products',
         name: 'products',
-        component: ProductsView,
+        component: () => import('../views/ProductsView.vue'),
         meta: { requiresAuth: true }
     },
     {
+        path: '/products/samsung',
+        name: 'productssamsung',
+        component: () => import('../views/SamsungProducts.vue'),
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/product/:id',
+        name: 'Product',
+        component: () => import('../views/ProductView.vue'),
+        props: true, // Pass route params as props to the component
+      },
+    {
         path: '/cart',
         name: 'Cart',
-        component: CartView,
+        component: () => import('../views/CartView.vue'),
         meta: { requiresAuth: true }
     },
     {
         path: '/checkout',
         name: 'Checkout',
-        component: CheckoutView,
+        component: () => import('../views/CheckoutView.vue'),
         meta: { requiresAuth: true }
     },
     {
         path: "/login",
         name: "Login",
-        component: Login,
+        component: () => import("../views/LoginView.vue"),
     },
     {
         path: "/register",
@@ -52,14 +61,29 @@ const routes = [
     {
         path: '/contact',
         name: 'contact',
-        component: ContactForm,
+        component: () => import('../views/ContactForm.vue'),
     },
     {
         path: '/politicas/politica-privacidad',
         name:"politica-privacidad",
-        component:PoliticaPrivacidad
-    }
-
+        component:() => import('@/components/politicas/PoliticaPrivacidad.vue'),
+    },
+    {
+        path: '/orders',
+        name: 'Orders',
+        component: UserOrders,
+        meta: { requiresAuth: true }, // Add this meta field if authentication is required to access orders
+      },
+      {
+        path: '/product/search',
+        name: 'ProductSearch',
+        component: ProductSearch,
+      },
+      {
+        path: '/payment',
+        name: 'payment',
+        component: CardPayment,
+      },
 
 ]
 
