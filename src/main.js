@@ -10,6 +10,10 @@ import { createVuestic } from "vuestic-ui";
 import "vuestic-ui/css";
 import Buefy from '@ntohq/buefy-next';
 import './index.css'
+import i18n from './i18n';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 createApp(App)
     .use(bootstrap)
@@ -17,4 +21,6 @@ createApp(App)
     .use(store)
     .use(createVuestic())
     .use(Buefy)
+    .use(i18n)
+    .use(VueSweetalert2)
     .mount('#app')
