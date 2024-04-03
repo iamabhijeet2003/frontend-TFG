@@ -4,21 +4,44 @@
   <div>
     <BannerToProduct></BannerToProduct>
   </div>
+
+ 
+  <div class="container-fluid">
+    <div class="row">
+        <FeaturedCollectionSamsung></FeaturedCollectionSamsung>     
+    </div>
+    <div class="row">
+       <AppleHero></AppleHero>
+    </div>
+  </div>
+
+ 
+    <div>
+      <IpadBanner></IpadBanner>
+    </div>
+
+    
     <div>
       <!-- <h2 class="h2 text-center py-3 my-5 text-white fw-bolder" style="background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgba(0,8,120,1) 0%, rgba(95,184,224,1) 99.7% );">Lo que opinan sobre nosotros: </h2> -->
       <TestimoniosClientes></TestimoniosClientes>
       <h2 class="h2 text-center py-3 my-5 text-white fw-bolder" style="background-image: radial-gradient( circle 975px at 2.6% 48.3%, rgba(95,184,224,1) 0%, rgba(0,8,120,1) 99.7% );"> &nbsp;</h2>
       
     </div>
-    
+   
+
+
+
     <div>
       <HomeStats></HomeStats>
     </div>
     <div style="background-image: linear-gradient( 184.1deg,  rgba(249,255,182,1) 44.7%, rgba(226,255,172,1) 67.2% );" class="my-3">
-      <h3 class="h3 ms-5 mt-3 fw-bolder">Nuestros servicios</h3>
+      <h3 class="h3 ms-5 mt-4 fw-bolder fs-2 text-center">Nuestros servicios</h3>
     <Servicios></Servicios>
     </div>
 
+    <div>
+      <FrequentlyAskedQuestions></FrequentlyAskedQuestions>
+    </div>
     <div>
       <PaymentMethods></PaymentMethods>
     </div>
@@ -33,6 +56,10 @@
   import PaymentMethods from '@/components/partials/PaymentMethods.vue'
   import BannerToProduct from '@/components/partials/BannerToProduct.vue'
   import HomeStats from '@/components/partials/HomeStats.vue'
+  import FeaturedCollectionSamsung from '@/components/partials/FeaturedCollectionSamsung.vue'
+  import AppleHero from '@/components/partials/AppleHero.vue'
+  import IpadBanner from '@/components/partials/IpadBanner.vue'
+  import FrequentlyAskedQuestions from '@/components/partials/FrequentlyAskedQuestions.vue'
   export default {
     data() {
       return {
@@ -45,7 +72,11 @@
       TestimoniosClientes,
       PaymentMethods,
       BannerToProduct,
-      HomeStats
+      HomeStats,
+      FeaturedCollectionSamsung,
+      AppleHero,
+      IpadBanner,
+      FrequentlyAskedQuestions
     },
     mounted() {
       // this.fetchFeaturedProducts();
