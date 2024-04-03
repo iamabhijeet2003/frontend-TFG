@@ -5,21 +5,27 @@
       <div class="col">
         <!-- Dropdown button for sorting by price -->
         <div class="dropdown mb-3">
-          <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="priceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="priceDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-filter fs-5">Order By</i>
           </button>
           <ul class="dropdown-menu" aria-labelledby="priceDropdown">
-            <li><button @click="sortByPrice('asc')" class="dropdown-item"><i class="bi bi-arrow-bar-up fs-4"></i>Lower Price</button></li>
-            <li><button @click="sortByPrice('desc')" class="dropdown-item"><i class="bi bi-arrow-bar-down fs-4"></i>Higher Price</button></li>
-            <li><button @click="sortByName('asc')" class="dropdown-item"><i class="bi bi-sort-alpha-down fs-4"></i>Name [A-Z]</button></li>
-            <li><button @click="sortByName('desc')" class="dropdown-item"><i class="bi bi-sort-alpha-down-alt fs-4"></i>Name [Z-A]</button></li>
+            <li><button @click="sortByPrice('asc')" class="dropdown-item"><i class="bi bi-arrow-bar-up fs-4"></i>Lower
+                Price</button></li>
+            <li><button @click="sortByPrice('desc')" class="dropdown-item"><i
+                  class="bi bi-arrow-bar-down fs-4"></i>Higher Price</button></li>
+            <li><button @click="sortByName('asc')" class="dropdown-item"><i class="bi bi-sort-alpha-down fs-4"></i>Name
+                [A-Z]</button></li>
+            <li><button @click="sortByName('desc')" class="dropdown-item"><i
+                  class="bi bi-sort-alpha-down-alt fs-4"></i>Name [Z-A]</button></li>
           </ul>
         </div>
       </div>
       <div class="col">
         <!-- Dropdown button for filtering by category -->
         <div class="dropdown mb-3">
-          <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="categoryDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-filter fs-5">Filter By Category</i>
           </button>
           <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
@@ -34,7 +40,7 @@
     <div class="row g-4" v-if="!loading && products.length">
       <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products"
         :key="product['@id']">
-        <div class="card border border-3" >
+        <div class="card border border-3">
           <img :src="product.image" class="card-img-top img-fluid" alt="Product Image" @click="viewProduct(product)">
           <div class="card-body">
             <h5 class="card-title fw-bold h5 text-center" @click="viewProduct(product)">{{ product.name }}</h5>
@@ -57,6 +63,8 @@
       </div>
     </div>
     <div v-if="!loading && !products.length">No products available</div>
+
+    
     <!-- Pagination -->
     <nav aria-label="Page navigation example">
       <ul class="pagination pagination-lg justify-content-center mt-5 mb-1">
@@ -84,6 +92,7 @@ import axios from 'axios';
 import { API_ROOT_URL } from '@/apiConfig';
 import CartBTN from '../components/CartBTN.vue';
 import { mapState } from "vuex";
+import Swal from 'sweetalert2';
 export default {
   data() {
     return {
@@ -190,6 +199,22 @@ export default {
         this.categories = response.data['hydra:member'];
       } catch (error) {
         console.error('Error fetching categories:', error);
+        if (error.response && error.response.status === 401) {
+          // Redirect to login page when unauthorized
+          Swal.fire({
+          title: 'You are not logged in!',
+          text: 'Please log in to see the products.',
+          icon: 'warning',
+          confirmButtonText: 'Log In',
+          showCancelButton: true,
+          cancelButtonText: 'Cancel',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Redirect to login page
+            this.$router.push('/login');
+          }
+        });
+        }
       }
     },
     viewProduct(product) {
