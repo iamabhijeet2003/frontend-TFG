@@ -5,7 +5,6 @@ import HomeView from '../views/HomeView.vue'
 import { authMiddleware } from '../middleware/auth.js';
 import UserOrders from '../views/UserOrders.vue';
 import ProductSearch from '@/components/product/ProductSearch.vue';
-import CardPayment from '@/components/payment/CardPayment.vue';
 const routes = [
     {
         path: '/',
@@ -78,11 +77,6 @@ const routes = [
         path: '/product/search',
         name: 'ProductSearch',
         component: ProductSearch,
-      },
-      {
-        path: '/payment',
-        name: 'payment',
-        component: CardPayment,
       },
 
 ]
