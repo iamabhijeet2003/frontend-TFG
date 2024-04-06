@@ -97,14 +97,14 @@ export default {
 
       // Modify subsequent API requests to include the JWT token
       if (response.ok) {
-        const { token, userId } = await response.json();
+        const { token, user_id } = await response.json();
         console.log("Token:", token);
 
-        this.setUser(userId);
+        this.setUser(user_id);
         this.setToken(token);
-        console.log("the current user id is: ", userId)
+        console.log("the current user id is: ", user_id)
         localStorage.setItem("token", token);
-        localStorage.setItem("userId", userId)
+        localStorage.setItem("user_id", user_id);
 
         // Redirect to products page on successful login
         this.$router.push({ name: 'products' });
