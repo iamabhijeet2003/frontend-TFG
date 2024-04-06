@@ -9,7 +9,7 @@
 
 <script>
 import NavBar from './components/NavBar.vue';
-import FooterPart from './components/partials/FooterPart.vue';
+import FooterPart from './components/partials/footer/FooterPart.vue';
 import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'App',
