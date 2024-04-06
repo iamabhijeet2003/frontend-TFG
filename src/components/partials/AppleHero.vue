@@ -1,3 +1,4 @@
+<!-- frontend-proyecto-02/src/components/partials/AppleHero.vue -->
 <template>
     <a href="/product/1">
         <section class="tw-cursor-pointer tw-text-center">
