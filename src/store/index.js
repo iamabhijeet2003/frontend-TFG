@@ -10,6 +10,7 @@ export default createStore({
     user: null,
     token: null,
     isAuthenticated: false,
+    locale: 'en',
   },
   mutations: {
 
@@ -54,14 +55,17 @@ export default createStore({
       localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
       localStorage.setItem('cart', JSON.stringify(state.cart));
     },
-    setUser(state, user) {
-      state.user = user;
-    },
+    setUser(state, user_id ) {
+      state.user_id = user_id;
+    },    
     setToken(state, token) {
       state.token = token;
     },
     setAuthentication(state, isAuthenticated) {
       state.isAuthenticated = isAuthenticated;
+    },
+    changeLocale(state, locale) {
+      state.locale = locale;
     },
   },
   actions: {
@@ -80,18 +84,8 @@ export default createStore({
       commit('setUser', null); // Clear user data
       location.reload();
     },
-    async fetchUserProfile({ commit }) {
-      try {
-        const response = await fetch('http://localhost:8000/profile', {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-        });
-        const userData = await response.json();
-        commit('setUser', userData);
-      } catch (error) {
-        console.error('Error fetching user profile:', error);
-      }
+    changeLocale({ commit }, locale) {
+      commit('changeLocale', locale);
     },
   },
   modules: {},
