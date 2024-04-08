@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
 
-            <router-link class="navbar-brand text-white fs-2 fw-bold" to="/">Abhi's</router-link>
+            <router-link class="navbar-brand text-white fs-3 fw-bold" to="/">Abhi's</router-link>
             <!-- <a class="navbar-brand" href="#">
                 <img src="https://res.cloudinary.com/dcm40dfr5/image/upload/f_auto,q_auto/v1/TFC/zjak88rub2xtxdoebual" alt="logo" width="70">
             </a> -->
@@ -12,6 +12,10 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div>
+          <!-- Include LanguageSwitcher component within navbar -->
+          <!-- <LanguageSwitcher /> -->
+        </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                     <li class="nav-item">
@@ -31,7 +35,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Apple</a></li>
-                            <li><a class="dropdown-item" href="#">Samsung</a></li>
+                            <li><a class="dropdown-item" href="/products/samsung">Samsung</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -45,6 +49,7 @@
                 <div>
                     <ProductSearch></ProductSearch>
                 </div>
+                
                 <hr>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -80,7 +85,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
 import ProductSearch from '@/components/product/ProductSearch'; // Import ProductSearch component
-
+// import LanguageSwitcher from '@/components/utils/LanguageSwitcher.vue'
 export default {
     data() {
         return {
@@ -89,6 +94,7 @@ export default {
     },
     components: {
         ProductSearch, // Register the ProductSearch component
+        // LanguageSwitcher
     },
     computed: {
         ...mapGetters(['isLoggedIn']), // Map isLoggedIn getter
