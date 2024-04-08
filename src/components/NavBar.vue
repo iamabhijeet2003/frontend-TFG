@@ -34,7 +34,7 @@
                             Marcas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Apple</a></li>
+                            <li><a class="dropdown-item" href="/products/apple">Apple</a></li>
                             <li><a class="dropdown-item" href="/products/samsung">Samsung</a></li>
                             <li>
                                 <hr class="dropdown-divider">
