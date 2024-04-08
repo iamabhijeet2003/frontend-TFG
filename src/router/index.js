@@ -21,7 +21,13 @@ const routes = [
     {
         path: '/products/samsung',
         name: 'productssamsung',
-        component: () => import('../views/SamsungProducts.vue'),
+        component: () => import('../views/products/SamsungProducts.vue'),
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/products/apple',
+        name: 'productsapple',
+        component: () => import('../views/products/AppleProducts.vue'),
         meta: { requiresAuth: true }
     },
     {
