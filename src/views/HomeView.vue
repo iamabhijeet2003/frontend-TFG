@@ -40,6 +40,9 @@
     </div>
 
     <div>
+      <NewsLetter></NewsLetter>
+    </div>
+    <div>
       <FrequentlyAskedQuestions></FrequentlyAskedQuestions>
     </div>
     <div>
@@ -60,6 +63,7 @@
   import AppleHero from '@/components/partials/AppleHero.vue'
   import IpadBanner from '@/components/partials/IpadBanner.vue'
   import FrequentlyAskedQuestions from '@/components/partials/FrequentlyAskedQuestions.vue'
+  import NewsLetter from '@/components/newsletter/NewsLetter.vue'
   export default {
     data() {
       return {
@@ -76,7 +80,8 @@
       FeaturedCollectionSamsung,
       AppleHero,
       IpadBanner,
-      FrequentlyAskedQuestions
+      FrequentlyAskedQuestions,
+      NewsLetter
     },
     mounted() {
       // this.fetchFeaturedProducts();
