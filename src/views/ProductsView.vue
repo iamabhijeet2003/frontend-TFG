@@ -3,6 +3,20 @@
   <div class="container-fluid px-5 mt-5">
     <div class="row">
       <div class="col">
+        <!-- Dropdown button for filtering by brand -->
+        <div class="col">
+          <div class="dropdown mb-3">
+            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="brandDropdown"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-filter fs-5">Filter By Brand</i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="brandDropdown">
+              <li v-for="brand in brands" :key="brand.id">
+                <button @click="filterByBrand(brand.id)" class="dropdown-item">{{ brand.name }}</button>
+              </li>
+            </ul>
+          </div>
+        </div>
         <!-- Dropdown button for sorting by price -->
         <div class="dropdown mb-3">
           <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="priceDropdown"
@@ -64,7 +78,7 @@
     </div>
     <div v-if="!loading && !products.length">No products available</div>
 
-    
+
     <!-- Pagination -->
     <nav aria-label="Page navigation example">
       <ul class="pagination pagination-lg justify-content-center mt-5 mb-1">
@@ -98,7 +112,8 @@ export default {
     return {
       loading: true,
       products: [],
-      categories: [], // for the filter
+      categories: [],
+      brands: [],
     };
   },
   setup() {
@@ -116,6 +131,7 @@ export default {
       this.fetchProducts();
     }
     this.fetchCategories();
+    this.fetchBrands();
   },
   methods: {
     async fetchProducts(page = 1) {
@@ -131,6 +147,37 @@ export default {
         this.totalPages = Math.ceil(response.data['hydra:totalItems'] / 10); // the api returns 10 products per page
       } catch (error) {
         console.error('Error fetching products:', error);
+      } finally {
+        this.loading = false;
+      }
+    },
+    async fetchBrands() {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${API_ROOT_URL}/brands`, { // Fetch brands from your API
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        this.brands = response.data['hydra:member'];
+      } catch (error) {
+        console.error('Error fetching brands:', error);
+      }
+    },
+    async filterByBrand(brandId) {
+      this.loading = true;
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${API_ROOT_URL}/products?brand=${brandId}`, { // Filter products by brand
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        this.products = response.data['hydra:member'];
+        this.totalPages = Math.ceil(response.data['hydra:totalItems'] / 10);
+      } catch (error) {
+        console.error('Error filtering products by brand:', error);
       } finally {
         this.loading = false;
       }
@@ -182,6 +229,7 @@ export default {
           },
         });
         this.products = response.data['hydra:member'];
+        this.totalPages = Math.ceil(response.data['hydra:totalItems'] / 10);
       } catch (error) {
         console.error('Error filtering products by category:', error);
       } finally {
@@ -202,18 +250,18 @@ export default {
         if (error.response && error.response.status === 401) {
           // Redirect to login page when unauthorized
           Swal.fire({
-          title: 'You are not logged in!',
-          text: 'Please log in to see the products.',
-          icon: 'warning',
-          confirmButtonText: 'Log In',
-          showCancelButton: true,
-          cancelButtonText: 'Cancel',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // Redirect to login page
-            this.$router.push('/login');
-          }
-        });
+            title: 'You are not logged in!',
+            text: 'Please log in to see the products.',
+            icon: 'warning',
+            confirmButtonText: 'Log In',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Redirect to login page
+              this.$router.push('/login');
+            }
+          });
         }
       }
     },
