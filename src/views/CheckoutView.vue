@@ -74,7 +74,7 @@
           <option value="vizcaya">vizcaya</option>
           <option value="zamora">zamora</option>
           <option value="zaragoza">zaragoza</option>
-          
+
         </select>
       </div>
       <div class="mb-3">
@@ -147,13 +147,59 @@ export default {
         router.push({ name: 'OrderConfirmation', params: { orderId: orderId } });
       } catch (error) {
         console.error('Checkout process failed:', error);
-        
+
+      }
+    },
+    async postToPaymentEntity() {
+      try {
+        // Retrieve user ID from localStorage
+        const userId = localStorage.getItem('user_id');
+        // Retrieve session ID from localStorage
+        const sessionId = localStorage.getItem('sessionId');
+
+        // Check if userId and sessionId exist
+        if (!userId || !sessionId) {
+          console.error('User ID or Session ID not found in localStorage');
+          return;
+        }
+
+        // Construct the data object to be sent in the POST request
+        const data = {
+          user: `/api/users/${userId}`,
+          sessionid: sessionId
+        };
+        const token = localStorage.getItem('token');
+        // Make a POST request to the payment entity endpoint
+        await axios.post('http://127.0.0.1:8000/api/payments', data, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/ld+json'
+          }
+        });
+
+        console.log('Payment data successfully sent to payment entity');
+      } catch (error) {
+        console.error('Error posting to payment entity:', error);
       }
     }
   },
   mounted() {
+    this.postToPaymentEntity();
     this.formData.created_at = new Date().toISOString().slice(0, 16);
     this.formData.totalPrice = this.$store.state.cartTotal;
+
+    // Parse the URL to get the query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Get the session ID value from the 'session_id' parameter
+    const sessionId = urlParams.get('session_id');
+
+    // Check if sessionId exists and store it in the localStorage
+    if (sessionId) {
+      localStorage.setItem('sessionId', sessionId);
+    } else {
+      console.error('Session ID not found in the URL');
+    }
   }
 };
 
@@ -176,7 +222,7 @@ async function createOrder(orderData) {
 async function createOrderDetails(orderDetailsData) {
   try {
     const token = localStorage.getItem('token');
-    await axios.post('http://127.0.0.1:8000/api/order_detailss', orderDetailsData, {
+    await axios.post('http://127.0.0.1:8000/api/order_details', orderDetailsData, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/ld+json'
@@ -189,6 +235,4 @@ async function createOrderDetails(orderDetailsData) {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
