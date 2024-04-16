@@ -49,6 +49,30 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
+        path: '/selectpayment',
+        name: 'selectpayment',
+        component: () => import('../views/checkout/SelectPaymentMethod.vue'),
+        meta: { requiresAuth: true }
+    },
+    // {
+    //     path: '/checkout3',
+    //     name: 'Checkout3',
+    //     component: () => import('../views/checkout/CheckoutTest23.vue'),
+    //     meta: { requiresAuth: true }
+    // },
+    // {
+    //     path: '/checkout2',
+    //     name: 'Checkout2',
+    //     component: () => import('../views/CheckoutRedirect.vue'),
+    //     meta: { requiresAuth: true }
+    // },
+    {
+        path: '/checkout-card',
+        name: 'checkout-card',
+        component: () => import('../views/checkout/CheckoutCard.vue'),
+        meta: { requiresAuth: true }
+    },
+    {
         path: "/login",
         name: "Login",
         component: () => import("../views/LoginView.vue"),
