@@ -13,8 +13,8 @@ import './index.css'
 import i18n from './i18n';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-
-
+import '@/assets/font-awesome-4.7.0/css/font-awesome.min.css'
+import VueLazyload from 'vue-lazyload'
 createApp(App)
     .use(bootstrap)
     .use(router)
@@ -23,4 +23,5 @@ createApp(App)
     .use(Buefy)
     .use(i18n)
     .use(VueSweetalert2)
+    .use(VueLazyload)
     .mount('#app')
