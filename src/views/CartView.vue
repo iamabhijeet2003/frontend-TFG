@@ -66,7 +66,7 @@
                         <p class="mb-2 h4">Total</p>
                         <p class="mb-2 h5">{{ $store.state.cartTotal }}<i class="bi bi-currency-euro"></i></p>
                     </div>                      
-                        <router-link class="btn btn-info btn-block btn-lg" to="/checkout">
+                        <router-link class="btn btn-info btn-block btn-lg" to="/selectpayment">
                             Checkout
                         </router-link>
 
