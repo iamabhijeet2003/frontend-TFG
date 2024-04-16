@@ -13,9 +13,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div>
-          <!-- Include LanguageSwitcher component within navbar -->
-          <!-- <LanguageSwitcher /> -->
-        </div>
+                <!-- Include LanguageSwitcher component within navbar -->
+                <!-- <LanguageSwitcher /> -->
+            </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                     <li class="nav-item">
@@ -34,12 +34,10 @@
                             Marcas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/products/apple">Apple</a></li>
-                            <li><a class="dropdown-item" href="/products/samsung">Samsung</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
+                            <!-- Dynamically generate dropdown items based on brands -->
+                            <li v-for="brand in brands" :key="brand.id">
+                                <a class="dropdown-item" @click="filterByBrand(brand.id)">{{ brand.name }}</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
                     <li class="nav-item ">
@@ -49,7 +47,7 @@
                 <div>
                     <ProductSearch></ProductSearch>
                 </div>
-                
+
                 <hr>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -61,7 +59,12 @@
 
                         </router-link>
                     </li>
-                    <div class="vr"></div>
+                    <div class="row">
+    <div class="col d-none d-md-block">
+        <div class="vr"></div>
+    </div>
+</div>
+
                     <li class="nav-item">
                         <KeepAlive>
                             <router-link v-if="!isLoggedIn" to="/login" class="nav-link text-white me-2">
@@ -86,11 +89,16 @@
 import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
 import ProductSearch from '@/components/product/ProductSearch'; // Import ProductSearch component
 // import LanguageSwitcher from '@/components/utils/LanguageSwitcher.vue'
+import axios from 'axios';
+import { API_ROOT_URL } from '@/apiConfig';
 export default {
     data() {
         return {
-
+            brands: [],
         }
+    },
+    mounted() {
+        this.fetchBrands(); // Fetch brands when the component is mounted
     },
     components: {
         ProductSearch, // Register the ProductSearch component
@@ -105,6 +113,26 @@ export default {
         handleLogout() {
             this.logout(); // Call the logout action when the logout button is clicked
         },
+        async fetchBrands() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get(`${API_ROOT_URL}/brands`, { // Fetch brands from your API
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                this.brands = response.data['hydra:member'];
+            } catch (error) {
+                console.error('Error fetching brands:', error);
+            }
+        },
+        filterByBrand(brandId) {
+            this.$router.push({
+                name: 'products',
+                query: { brand: brandId }
+            });
+        },
+
     },
     created() {
         this.checkAuthentication(); // Check authentication status when the component is created
