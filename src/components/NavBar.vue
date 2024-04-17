@@ -50,10 +50,9 @@
 
                 <hr>
 
-
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown text-white fs-4 me-4" href="#" role="button"
+                        <a class="nav-link dropdown text-white fs-4 me-4 " href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <VaAvatar class="mr-6" color="#fff">
                                             <span><i class="bi bi-person fs-3 text-primary"></i></span>
@@ -62,21 +61,38 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <router-link class="dropdown-item text-black fw-bold nav-link " to="/orders">My Orders</router-link>
+                                <router-link class="dropdown-item text-black fw-bold nav-link " to="/orders">
+                                    
+                                    <VaAvatar class="mr-6" color="#fff">
+                                            <i class="bi bi-bag-check fs-3 text-primary"></i>
+                                        </VaAvatar>
+                                        <span class="text-black fw-bold">My Orders</span>
+                                </router-link>
                             </li>
                             <li class="nav-item">
+                                <router-link class="dropdown-item text-black fw-bold nav-link " to="/profile">
+                                    <VaAvatar class="mr-6" color="#fff">
+                                            <i class="bi bi-person fs-3 text-primary"></i>
+                                        </VaAvatar>
+                                        <span class="text-black fw-bold">My Profile</span>
+                                </router-link>
+                            </li>
+                            <li class="nav-item" style="cursor: pointer;">
                                 <KeepAlive>
                                     <router-link v-if="!isLoggedIn" to="/login" class="nav-link text-white me-2">
-                                        <span class="text-black fw-bold">Login</span>
+                                        
                                         <VaAvatar class="mr-6" color="#fff">
                                             <span><i class="bi bi-person fs-3 text-primary"></i></span>
                                             <span class="badge bg-danger text-white ms-3"></span>
                                         </VaAvatar>
+                                        <span class="text-black fw-bold">Login</span>
                                     </router-link>
                                     <div v-else @click="handleLogout" class="nav-link text-white me-2">
+                                        
+                                        <VaAvatar class="mr-6" color="#fff">
+                                            <i class="bi bi-box-arrow-right fs-3 text-primary"></i>
+                                        </VaAvatar>
                                         <span class="text-black fw-bold">Logout</span>
-                                        <VaAvatar class="mr-6" color="#fff"><i
-                                                class="bi bi-box-arrow-right fs-3 text-primary"></i></VaAvatar>
                                     </div>
                                 </KeepAlive>
                             </li>
