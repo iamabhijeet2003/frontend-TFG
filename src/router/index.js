@@ -54,6 +54,12 @@ const routes = [
         component: () => import('../views/checkout/SelectPaymentMethod.vue'),
         meta: { requiresAuth: true }
     },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: () => import('../views/UserProfile.vue'),
+        meta: { requiresAuth: true }
+    },
     // {
     //     path: '/checkout3',
     //     name: 'Checkout3',
