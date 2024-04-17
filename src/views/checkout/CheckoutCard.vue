@@ -1,5 +1,5 @@
 <template>
-    <button @click="redirectToPaymentPage">Pay with Card</button>
+    <button @click="redirectToPaymentPage" class="btn btn-outline-primary fs-1 fw-bold">Pay with Card <i class="bi bi-credit-card-2-back"></i></button>
 </template>
 
 <script>
