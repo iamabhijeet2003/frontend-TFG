@@ -49,7 +49,40 @@
                 </div>
 
                 <hr>
+
+
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown text-white fs-4 me-4" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <VaAvatar class="mr-6" color="#fff">
+                                            <span><i class="bi bi-person fs-3 text-primary"></i></span>
+                                            <span class="badge bg-danger text-white ms-3"></span>
+                            </VaAvatar>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <router-link class="dropdown-item text-black fw-bold nav-link " to="/orders">My Orders</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <KeepAlive>
+                                    <router-link v-if="!isLoggedIn" to="/login" class="nav-link text-white me-2">
+                                        <span class="text-black fw-bold">Login</span>
+                                        <VaAvatar class="mr-6" color="#fff">
+                                            <span><i class="bi bi-person fs-3 text-primary"></i></span>
+                                            <span class="badge bg-danger text-white ms-3"></span>
+                                        </VaAvatar>
+                                    </router-link>
+                                    <div v-else @click="handleLogout" class="nav-link text-white me-2">
+                                        <span class="text-black fw-bold">Logout</span>
+                                        <VaAvatar class="mr-6" color="#fff"><i
+                                                class="bi bi-box-arrow-right fs-3 text-primary"></i></VaAvatar>
+                                    </div>
+                                </KeepAlive>
+                            </li>
+                        </ul>
+                    </li>
+                    
                     <li class="nav-item">
                         <router-link class="nav-link text-white me-2" to="/cart">
                             <VaAvatar class="mr-6" color="#fff">
@@ -58,26 +91,6 @@
                             </VaAvatar>
 
                         </router-link>
-                    </li>
-                    <div class="row">
-    <div class="col d-none d-md-block">
-        <div class="vr"></div>
-    </div>
-</div>
-
-                    <li class="nav-item">
-                        <KeepAlive>
-                            <router-link v-if="!isLoggedIn" to="/login" class="nav-link text-white me-2">
-                                <VaAvatar class="mr-6" color="#fff">
-                                    <span><i class="bi bi-person fs-3 text-primary"></i></span>
-                                    <span class="badge bg-danger text-white ms-3"></span>
-                                </VaAvatar>
-                            </router-link>
-                            <div v-else @click="handleLogout" class="nav-link text-white me-2">
-                                <VaAvatar class="mr-6" color="#fff"><i
-                                        class="bi bi-box-arrow-right fs-3 text-primary"></i></VaAvatar>
-                            </div>
-                        </KeepAlive>
                     </li>
                 </ul>
             </div>
