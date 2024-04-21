@@ -23,8 +23,8 @@
             <ul v-if="searchResults.length">
               <li v-for="product in searchResults" :key="product.id">
                 <div class="product">
-                  <img :src="product.image" alt="Product Image">
-                  <div class="product-details">
+                  <img :src="product.image" alt="Product Image" @click="viewProduct(product)">
+                  <div class="product-details" @click="viewProduct(product)">
                     <h3>{{ product.name }}</h3>
                     <p>Price: {{ product.price }}€</p>
                     <div class="btn-group">
@@ -78,6 +78,9 @@ export default {
       } catch (error) {
         console.error('Error searching products:', error);
       }
+    },
+    viewProduct(product) {
+      this.$router.push({ name: 'Product', params: { id: product.id } });
     },
   },
 };
