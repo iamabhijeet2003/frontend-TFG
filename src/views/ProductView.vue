@@ -24,7 +24,7 @@
             </div>
             <ProductRatings :productId="product.id" />
 
-            <!-- <RatingForm :productId="product.id" /> -->
+            <RatingForm :productId="product.id" />
         </div>
     </div>
 </template>
@@ -34,7 +34,7 @@ import axios from 'axios';
 import { API_ROOT_URL } from '@/apiConfig';
 import ProductRatings from '../components/ratings/ProductRating.vue';
 import CartBTN from '../components/CartBTN.vue';
-// import RatingForm from '../components/ratings/AddRating.vue'; 
+import RatingForm from '../components/ratings/AddRating.vue'; 
 
 export default {
     data() {
@@ -46,7 +46,7 @@ export default {
     components: {
         ProductRatings,
         CartBTN,
-        // RatingForm,
+        RatingForm,
     },
     async mounted() {
         await this.fetchProduct();
