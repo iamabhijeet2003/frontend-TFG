@@ -12,10 +12,7 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div>
-                <!-- Include LanguageSwitcher component within navbar -->
-                <LanguageSwitcher /> 
-            </div>
+            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                     <li class="nav-item">
@@ -63,14 +60,14 @@
                                 <span class="badge bg-danger text-white ms-3"></span>
                             </VaAvatar>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu custom-dropdown-menu">
                             <li class="nav-item">
                                 <router-link class="dropdown-item text-black fw-bold nav-link " to="/orders">
 
                                     <VaAvatar class="mr-6" color="#fff">
                                         <i class="bi bi-bag-check fs-3 text-primary"></i>
                                     </VaAvatar>
-                                    <span class="text-black fw-bold">My Orders</span>
+                                    <span class="text-black fw-bold">{{ $t('navbar.my_orders') }}</span>
                                 </router-link>
                             </li>
                             <li class="nav-item">
@@ -78,7 +75,7 @@
                                     <VaAvatar class="mr-6" color="#fff">
                                         <i class="bi bi-person fs-3 text-primary"></i>
                                     </VaAvatar>
-                                    <span class="text-black fw-bold">My Profile</span>
+                                    <span class="text-black fw-bold">{{ $t('navbar.my_profile') }}</span>
                                 </router-link>
                             </li>
                             <li class="nav-item" style="cursor: pointer;">
@@ -89,14 +86,14 @@
                                             <span><i class="bi bi-person fs-3 text-primary"></i></span>
                                             <span class="badge bg-danger text-white ms-3"></span>
                                         </VaAvatar>
-                                        <span class="text-black fw-bold">Login</span>
+                                        <span class="text-black fw-bold">{{ $t('navbar.login')}}</span>
                                     </router-link>
                                     <div v-else @click="handleLogout" class="nav-link text-white me-2">
 
                                         <VaAvatar class="mr-6" color="#fff">
                                             <i class="bi bi-box-arrow-right fs-3 text-primary"></i>
                                         </VaAvatar>
-                                        <span class="text-black fw-bold">Logout</span>
+                                        <span class="text-black fw-bold">{{ $t('navbar.logout')}}</span>
                                     </div>
                                 </KeepAlive>
                             </li>
@@ -113,6 +110,10 @@
                         </router-link>
                     </li>
                 </ul>
+
+                <div>
+                <LanguageSwitcher /> 
+            </div>
             </div>
         </div>
     </nav>
@@ -180,4 +181,8 @@ export default {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.custom-dropdown-menu {
+    min-width: 200px; 
+}
+</style>
