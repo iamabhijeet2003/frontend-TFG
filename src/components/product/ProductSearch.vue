@@ -4,7 +4,7 @@
   <form type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <div class="input-group">
       <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-      <input v-model="searchQuery" class="form-control me-2 form-control-lg" type="search" placeholder="Search" aria-label="Search">
+      <input v-model="searchQuery" class="form-control me-2 form-control-lg" type="search" :placeholder="$t('product_search.search_placeholder')" aria-label="Search">
     </div>
   </form>
   <!-- Modal -->
