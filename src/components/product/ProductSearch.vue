@@ -1,3 +1,4 @@
+<!-- frontend-proyecto-02/src/components/product/ProductSearch.vue -->
 <template>
   <!-- Form to trigger modal -->
   <form type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -11,13 +12,13 @@
     <div class="modal-dialog  modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{ $t('product_search.search') }}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="product-search">
             <div class="input-group mb-3">
-              <input type="text" v-model="searchQuery" @input="handleInput" placeholder="Search products..."
+              <input type="text" v-model="searchQuery" @input="handleInput" :placeholder="$t('product_search.search_placeholder')"
                 class="container-fluid border form-control">
             </div>
             <ul v-if="searchResults.length">
@@ -26,7 +27,7 @@
                   <img :src="product.image" alt="Product Image" @click="viewProduct(product)">
                   <div class="product-details" @click="viewProduct(product)">
                     <h3>{{ product.name }}</h3>
-                    <p>Price: {{ product.price }}€</p>
+                    <p>{{ $t('product_search.price') }}: {{ product.price }}€</p>
                     <div class="btn-group">
                       <CartBTN :product="product" />
                     </div>
@@ -39,7 +40,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $t('product_search.close') }}</button>
         </div>
       </div>
     </div>
