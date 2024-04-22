@@ -1,7 +1,18 @@
 {
-    "locale": {
-      "en": "Inglés",
-      "es": "Español"
-    }
+  "locale": {
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "products": "Productos",
+    "offers": "Ofertas",
+    "brands": "Marcas",
+    "see_all": "Ver todo...",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "my_orders": "Mis pedidos",
+    "my_profile": "Mi perfil",
+    "cart": "Carrito"
   }
-  
+}
