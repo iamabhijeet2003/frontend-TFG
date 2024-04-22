@@ -34,6 +34,7 @@ const routes = [
         name: 'Product',
         component: () => import('../views/ProductView.vue'),
         props: true, // Pass route params as props to the component
+        meta: { requiresAuth: true }
       },
     {
         path: '/cart',
