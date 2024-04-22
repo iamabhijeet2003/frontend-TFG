@@ -14,5 +14,16 @@
     "my_orders": "Mis pedidos",
     "my_profile": "Mi perfil",
     "cart": "Carrito"
+  },
+  "banner": {
+    "products": "Productos",
+    "product_description": "Descubre nuestra increíble gama de productos diseñados para mejorar tu estilo de vida. Desde tecnología de vanguardia hasta accesorios elegantes, tenemos todo lo que necesitas para elevar tus experiencias diarias.",
+    "shop_now": "Comprar ahora"
+  },
+  "product_search": {
+    "search": "Buscar",
+    "search_placeholder": "Buscar productos...",
+    "price": "Precio",
+    "close": "Cerrar"
   }
 }
