@@ -14,24 +14,24 @@
             </button>
             <div>
                 <!-- Include LanguageSwitcher component within navbar -->
-                <!-- <LanguageSwitcher /> -->
+                <LanguageSwitcher /> 
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                     <li class="nav-item">
-                        <a class="nav-link active text-white fs-4" aria-current="page" href="/">Inicio</a>
+                        <a class="nav-link active text-white fs-4" aria-current="page" href="/">{{ $t('navbar.home') }}</a>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4" href="/products">Productos</a>
+                        <a class="nav-link text-white fs-4" href="/products">{{ $t('navbar.products') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4" href="#">Ofertas</a>
+                        <a class="nav-link text-white fs-4" href="#">{{ $t('navbar.offers') }}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fs-4" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Marcas
+                            {{ $t('navbar.brands') }}
                         </a>
                         <ul class="dropdown-menu">
                             <!-- Dynamically generate dropdown items based on brands -->
@@ -45,7 +45,7 @@
                         </ul>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link text-white fs-4">Ver todo...</a>
+                        <a class="nav-link text-white fs-4">{{ $t('navbar.see_all') }}</a>
                     </li>
                 </ul>
                 <div>
@@ -121,7 +121,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
 import ProductSearch from '@/components/product/ProductSearch'; // Import ProductSearch component
-// import LanguageSwitcher from '@/components/utils/LanguageSwitcher.vue'
+import LanguageSwitcher from '@/components/utils/LanguageSwitcher.vue'
 import axios from 'axios';
 import { API_ROOT_URL } from '@/apiConfig';
 export default {
@@ -135,7 +135,7 @@ export default {
     },
     components: {
         ProductSearch, // Register the ProductSearch component
-        // LanguageSwitcher
+        LanguageSwitcher
     },
     computed: {
         ...mapGetters(['isLoggedIn']), // Map isLoggedIn getter
