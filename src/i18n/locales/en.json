@@ -3,5 +3,17 @@
       "locale": {
         "en": "English",
         "es": "Spanish"
-      }
+      },
+      "navbar": {
+        "home": "Home",
+        "products": "Products",
+        "offers": "Offers",
+        "brands": "Brands",
+        "see_all": "See all...",
+        "login": "Login",
+        "logout": "Logout",
+        "my_orders": "My Orders",
+        "my_profile": "My Profile",
+        "cart": "Cart"
+    }
 }
