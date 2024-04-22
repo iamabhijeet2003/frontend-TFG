@@ -119,6 +119,7 @@
 
 </template>
 <script>
+
 import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
 import ProductSearch from '@/components/product/ProductSearch'; // Import ProductSearch component
 import LanguageSwitcher from '@/components/utils/LanguageSwitcher.vue'
@@ -174,6 +175,7 @@ export default {
     created() {
         this.checkAuthentication(); // Check authentication status when the component is created
     },
+    
 }
 
 </script>
