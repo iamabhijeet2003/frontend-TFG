@@ -1,19 +1,29 @@
 {
-   
-      "locale": {
-        "en": "English",
-        "es": "Spanish"
-      },
-      "navbar": {
-        "home": "Home",
-        "products": "Products",
-        "offers": "Offers",
-        "brands": "Brands",
-        "see_all": "See all...",
-        "login": "Login",
-        "logout": "Logout",
-        "my_orders": "My Orders",
-        "my_profile": "My Profile",
-        "cart": "Cart"
-    }
+  "locale": {
+    "en": "English",
+    "es": "Spanish"
+  },
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "offers": "Offers",
+    "brands": "Brands",
+    "see_all": "See all...",
+    "login": "Login",
+    "logout": "Logout",
+    "my_orders": "My Orders",
+    "my_profile": "My Profile",
+    "cart": "Cart"
+  },
+  "banner": {
+    "products": "Products",
+    "product_description": "Discover our amazing range of products designed to enhance your lifestyle. From cutting-edge technology to stylish accessories, we have everything you need to elevate your everyday experiences.",
+    "shop_now": "Shop Now"
+  },
+  "product_search": {
+    "search": "Search",
+    "search_placeholder": "Search products...",
+    "price": "Price",
+    "close": "Close"
+  }
 }
