@@ -36,7 +36,11 @@
                         <ul class="dropdown-menu">
                             <!-- Dynamically generate dropdown items based on brands -->
                             <li v-for="brand in brands" :key="brand.id">
-                                <a class="dropdown-item" @click="filterByBrand(brand.id)">{{ brand.name }}</a>
+                                <a v-if="brand.id != 0" class="dropdown-item" @click="filterByBrand(brand.id)">{{ brand.name }}</a>
+
+                                <router-link v-if="brand.id == 0" :to="brand.link" class="dropdown-item"
+                                    :style="{ cursor: brand.pointer ? 'pointer' : 'auto' }">{{ brand.name
+                                    }}</router-link>
                             </li>
                         </ul>
                     </li>
@@ -55,32 +59,32 @@
                         <a class="nav-link dropdown text-white fs-4 me-4 " href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <VaAvatar class="mr-6" color="#fff">
-                                            <span><i class="bi bi-person fs-3 text-primary"></i></span>
-                                            <span class="badge bg-danger text-white ms-3"></span>
+                                <span><i class="bi bi-person fs-3 text-primary"></i></span>
+                                <span class="badge bg-danger text-white ms-3"></span>
                             </VaAvatar>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
                                 <router-link class="dropdown-item text-black fw-bold nav-link " to="/orders">
-                                    
+
                                     <VaAvatar class="mr-6" color="#fff">
-                                            <i class="bi bi-bag-check fs-3 text-primary"></i>
-                                        </VaAvatar>
-                                        <span class="text-black fw-bold">My Orders</span>
+                                        <i class="bi bi-bag-check fs-3 text-primary"></i>
+                                    </VaAvatar>
+                                    <span class="text-black fw-bold">My Orders</span>
                                 </router-link>
                             </li>
                             <li class="nav-item">
                                 <router-link class="dropdown-item text-black fw-bold nav-link " to="/profile">
                                     <VaAvatar class="mr-6" color="#fff">
-                                            <i class="bi bi-person fs-3 text-primary"></i>
-                                        </VaAvatar>
-                                        <span class="text-black fw-bold">My Profile</span>
+                                        <i class="bi bi-person fs-3 text-primary"></i>
+                                    </VaAvatar>
+                                    <span class="text-black fw-bold">My Profile</span>
                                 </router-link>
                             </li>
                             <li class="nav-item" style="cursor: pointer;">
                                 <KeepAlive>
                                     <router-link v-if="!isLoggedIn" to="/login" class="nav-link text-white me-2">
-                                        
+
                                         <VaAvatar class="mr-6" color="#fff">
                                             <span><i class="bi bi-person fs-3 text-primary"></i></span>
                                             <span class="badge bg-danger text-white ms-3"></span>
@@ -88,7 +92,7 @@
                                         <span class="text-black fw-bold">Login</span>
                                     </router-link>
                                     <div v-else @click="handleLogout" class="nav-link text-white me-2">
-                                        
+
                                         <VaAvatar class="mr-6" color="#fff">
                                             <i class="bi bi-box-arrow-right fs-3 text-primary"></i>
                                         </VaAvatar>
@@ -98,7 +102,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li class="nav-item">
                         <router-link class="nav-link text-white me-2" to="/cart">
                             <VaAvatar class="mr-6" color="#fff">
@@ -153,6 +157,10 @@ export default {
                 this.brands = response.data['hydra:member'];
             } catch (error) {
                 console.error('Error fetching brands:', error);
+                if (error.response && error.response.status === 401) {
+                    // If status is 401, set up a router-link to the login page
+                    this.brands = [{ id: 0, name: 'Login to see brands', link: '/login', pointer: true }];
+                }
             }
         },
         filterByBrand(brandId) {
