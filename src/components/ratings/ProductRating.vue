@@ -1,7 +1,7 @@
 <template>
   <div class="product-ratings tw-relative tw-mx-auto tw-rounded-lg tw-bg-gradient-to-tr tw-from-pink-300 tw-to-blue-300 tw-p-0.5 tw-shadow-lg">
     <div class="tw-bg-white tw-p-7 tw-rounded-md">
-    <h2 class="h2 fw-bold text-center">Ratings</h2>
+    <h2 class="h2 tw-text-4xl tw-font-extrabold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-rose-600 tw-via-red-400 tw-to-orange-500 fw-bold text-center fs-1 mb-1">Ratings</h2>
     <ul v-if="ratings.length" class="fs-4 tw-rounded-lg tw-bg-gradient-to-tr tw-from-pink-300 tw-to-blue-300 tw-p-0.5 tw-shadow-lg">
       <li v-for="rating in ratings" :key="rating.id">
         <div class="rating tw-bg-white tw-p-7 tw-rounded-md">
