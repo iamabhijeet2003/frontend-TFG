@@ -25,5 +25,10 @@
     "search_placeholder": "Search products...",
     "price": "Price",
     "close": "Close"
+  },
+  "samsung_featured": {
+    "exploreLatestProducts": "Explore the latest Samsung products",
+    "discoverNewestOfferings": "Discover the newest offerings from Samsung and stay ahead with cutting-edge technology",
+    "exploreNow": "Explore Now"
   }
 }
