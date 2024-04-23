@@ -12,7 +12,7 @@
               Log in
             </h1>
 
-            <form @submit="login" class="tw-space-y-6 mx-4" >
+            <form @submit="login" class="tw-space-y-6 mx-4">
               <div class="tw-mb-4">
                 <label for="email" class="tw-mb-2  tw-dark:text-gray-400 tw-text-lg">Email <i
                     class="bi bi-person-fill text-primary fs-5"></i></label>
@@ -39,9 +39,14 @@
                   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Registrate</router-link>
               </p> -->
               <!-- <button class="submit">Iniciar sesión</button> -->
-              <button type="submit"
-                class="tw-bg-gradient-to-r tw-dark:text-gray-300 tw-from-blue-500 tw-to-purple-500 tw-shadow-lg tw-mt-6 tw-p-2 tw-text-white tw-rounded-lg tw-w-full tw-hover:scale-105 tw-hover:from-purple-500 tw-hover:to-blue-500 tw-transition tw-duration-300 tw-ease-in-out">Log
-                In</button>
+              <button type="submit" 
+                :class="{ 'loading': loading }"
+                class="tw-bg-gradient-to-r tw-dark:text-gray-300 tw-from-blue-500 tw-to-purple-500 tw-shadow-lg tw-mt-6 tw-p-2 tw-text-white tw-rounded-lg tw-w-full tw-hover:scale-105 tw-hover:from-purple-500 tw-hover:to-blue-500 tw-transition tw-duration-300 tw-ease-in-out">
+                <!-- Log
+                In -->
+                <span v-if="!loading">Log In</span>
+                <span v-else>Loading...</span> 
+              </button>
 
               <div v-if="errorMessage" class="alert alert-danger" role="alert">
                 {{ errorMessage }}
@@ -52,7 +57,8 @@
             <div class="tw-flex tw-flex-col tw-mt-4 tw-items-center tw-justify-center tw-text-sm">
               <h3 class="tw-dark:text-gray-300">
                 Don't have an account?
-                <router-link to="/register" class="tw-group tw-text-blue-400 tw-transition-all tw-duration-100 tw-ease-in-out">
+                <router-link to="/register"
+                  class="tw-group tw-text-blue-400 tw-transition-all tw-duration-100 tw-ease-in-out">
                   <span
                     class="tw-bg-left-bottom tw-bg-gradient-to-r tw-from-blue-400 tw-to-blue-400 tw-bg-[length:0%_2px] tw-bg-no-repeat tw-group-hover:tw-bg-[length:100%_2px] tw-transition-all tw-duration-500 tw-ease-out">
                     Sign Up
@@ -109,22 +115,6 @@
     </div>
   </div>
   <particles-bg type="random" :canvas="{ backgroundColor: '#ffffff' }" :bg="true" />
-  <!--
-    <div>
-      <h1>LOGIN</h1>
-      <form @submit="login">
-        <input v-model="email" placeholder="email" />
-        <br />
-        <br />
-        <input v-model="password" placeholder="password" type="password" />
-        <br />
-        <br />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-    <div v-if="errorMessage" class="alert alert-danger" role="alert">
-        {{ errorMessage }}
-      </div>-->
 </template>
 
 <script>
@@ -137,6 +127,7 @@ export default {
       email: "",
       password: "",
       errorMessage: "", // Message for showing login error
+      loading: false,
     };
   },
   components: {
@@ -146,176 +137,86 @@ export default {
     ...mapMutations(["setUser", "setToken"]),
     async login(e) {
       e.preventDefault();
+      this.loading = true;
       console.log("Submitting login form...");
       console.log("Username:", this.email);
       console.log("Password:", this.password);
 
-      const response = await fetch("http://localhost:8000/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: this.email,
-          password: this.password,
-        }),
-      });
+      try {
+        const response = await fetch("http://localhost:8000/auth", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: this.email,
+            password: this.password,
+          }),
+        });
 
-      console.log("Login response:", response);
 
+        console.log("Login response:", response);
+        // Modify subsequent API requests to include the JWT token
+        if (response.ok) {
+          const { token, user_id } = await response.json();
+          console.log("Token:", token);
 
-      //const { /*user,*/ token } = await response.json();
-      //console.log("User:", user);
-      //console.log("Token:", token);
+          this.setUser(user_id);
+          this.setToken(token);
+          console.log("the current user id is: ", user_id)
+          localStorage.setItem("token", token);
+          localStorage.setItem("user_id", user_id);
 
-      //this.setUser(user);
-      //this.setToken(token);
-      // Store token in localStorage for persistent login
-      //localStorage.setItem("token", token);
+          // Redirect to products page on successful login
+          this.$router.push({ name: 'products' });
+          console.log("Login successful!");
+          this.$router.push({ name: 'products' });
+          console.log("Login successful!");
+        } else {
 
-      // Modify subsequent API requests to include the JWT token
-      if (response.ok) {
-        const { token, user_id } = await response.json();
-        console.log("Token:", token);
-
-        this.setUser(user_id);
-        this.setToken(token);
-        console.log("the current user id is: ", user_id)
-        localStorage.setItem("token", token);
-        localStorage.setItem("user_id", user_id);
-
-        // Redirect to products page on successful login
-        this.$router.push({ name: 'products' });
-        console.log("Login successful!");
-        // console.log("Fetching products...");
-        // const productsResponse = await fetch("http://localhost:8001/api/productss", {
-        //   headers: {
-        //     "Authorization": `Bearer ${token}`,
-        //   },
-        // });
-        //console.log("Products response:", productsResponse);
-        this.$router.push({ name: 'products' });
-        console.log("Login successful!");
-      } else {
-        // Show error message for incorrect username or password
-        this.errorMessage = "Incorrect email or password";
-        console.error("Login failed:", this.errorMessage);
+          this.errorMessage = "Incorrect email or password";
+          console.error("Login failed:", this.errorMessage);
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+      } finally {
+        this.loading = false; // Set loading to false when login finishes
       }
-      // console.log("Fetching products...");
-      // const productsResponse = await fetch("http://localhost:8001/api/productss", {
-      //   headers: {
-      //     "Authorization": `Bearer ${token}`,
-      //   },
-      // });
-
-      // console.log("Products response:", productsResponse);  
-      // this.$router.push({ name: 'products' });
-      // console.log("Login successful!");
     },
-
-
-
-
   },
 };
 </script>
 
 <style scoped>
-/*
-* {
-  margin: 0;
-  padding: 0;
-  font-family: arial;
-  color: #fff;
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  background: #081b29;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-
-}
-
-::-webkit-input-placeholder {
-  color: #eee;
-}
-
-.wrapper {
+.loading {
   position: relative;
-  width: 900px;
-  height: 65vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 3px solid #00ffff;
-  box-shadow: 0 0 50px 0 #00a6bc;
-  backdrop-filter: blur(100px);
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.loading span {
+  visibility: hidden;
 }
 
-.title {
-  font-size: 35px;
-}
-
-.submit {
-  border: none;
-  outline: none;
-  width: 288px;
-  margin-top: 25px;
-  padding: 10px 0;
-  font-size: 20px;
-  border-radius: 40px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  background: linear-gradient(45deg, #0ef, #c800ff);
-}
-
-.footer {
-  margin-top: 30px;
-  letter-spacing: 0.5px;
-  font-size: 14px;
-}
-
-.link {
-  color: #0ef;
-  text-decoration: none;
-}
-
-.banner {
+.loading::after {
+  content: "";
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 500px;
-  height: 390px;
-  background: linear-gradient(to right, #0ef, #c800ff);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
-  padding-right: 70px;
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
-.wel_text {
-  font-size: 40px;
-  margin-top: -50px;
-  line-height: 50px;
-}
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 
-.para {
-  margin-top: 10px;
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: 1px;
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
-*/
 </style>
