@@ -1,12 +1,13 @@
 <!-- /src/components/utils/LanguageSwitcher.vue -->
 <template>
-    <select class="App-language form-select" v-model="locale">     
+  <div class=" ms-2 me-2 mb-1">
+    <select class="form-select form-select-sm rounded-pill" v-model="locale">     
       <option
         v-for="optionLocale in supportLocales"
         :key="`locale-${optionLocale}`"
         :value="optionLocale">{{ optionLocale }}
       </option>
-    </select>
+    </select></div>
   </template>
 <script setup>
 import { watch } from 'vue';
