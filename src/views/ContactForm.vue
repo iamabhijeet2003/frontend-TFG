@@ -27,7 +27,7 @@
                                 class="form-control"></textarea>
                         </div>
                         <button style="margin: 1rem 0" @click="submitForm()" class="btn btn-primary btn-lg">
-                            Send test data
+                            Send message
                         </button>
                     </form>
                 </div>
