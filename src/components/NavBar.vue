@@ -12,11 +12,12 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                     <li class="nav-item">
-                        <a class="nav-link active text-white fs-4" aria-current="page" href="/">{{ $t('navbar.home') }}</a>
+                        <a class="nav-link active text-white fs-4" aria-current="page" href="/">{{ $t('navbar.home')
+                            }}</a>
 
                     </li>
                     <li class="nav-item">
@@ -33,16 +34,13 @@
                         <ul class="dropdown-menu">
                             <!-- Dynamically generate dropdown items based on brands -->
                             <li v-for="brand in brands" :key="brand.id">
-                                <a v-if="brand.id != 0" class="dropdown-item" @click="filterByBrand(brand.id)">{{ brand.name }}</a>
-
-                                <router-link v-if="brand.id == 0" :to="brand.link" class="dropdown-item"
-                                    :style="{ cursor: brand.pointer ? 'pointer' : 'auto' }">{{ brand.name
-                                    }}</router-link>
+                                <a v-if="brand.id != 0" class="dropdown-item" @click="filterByBrand(brand.id)">{{
+                            brand.name }}</a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link text-white fs-4">{{ $t('navbar.see_all') }}</a>
+                        <a class="nav-link text-white fs-4" href="/contact">{{ $t('navbar.contact') }}</a>
                     </li>
                 </ul>
                 <div>
@@ -86,14 +84,14 @@
                                             <span><i class="bi bi-person fs-3 text-primary"></i></span>
                                             <span class="badge bg-danger text-white ms-3"></span>
                                         </VaAvatar>
-                                        <span class="text-black fw-bold">{{ $t('navbar.login')}}</span>
+                                        <span class="text-black fw-bold">{{ $t('navbar.login') }}</span>
                                     </router-link>
                                     <div v-else @click="handleLogout" class="nav-link text-white me-2">
 
                                         <VaAvatar class="mr-6" color="#fff">
                                             <i class="bi bi-box-arrow-right fs-3 text-primary"></i>
                                         </VaAvatar>
-                                        <span class="text-black fw-bold">{{ $t('navbar.logout')}}</span>
+                                        <span class="text-black fw-bold">{{ $t('navbar.logout') }}</span>
                                     </div>
                                 </KeepAlive>
                             </li>
@@ -104,7 +102,10 @@
                         <router-link class="nav-link text-white me-2" to="/cart">
                             <VaAvatar class="mr-6" color="#fff">
                                 <span><i class="bi bi-cart fs-3 text-danger"></i></span>
-                                <span class="badge bg-danger text-white ms-3"></span>
+                                <span v-if="$store.state.cart.length > 0"
+                                    class="badge bg-white text-danger position-absolute top-0 start-100 translate-middle">
+                                    {{ $store.state.cart.length }}
+                                </span>
                             </VaAvatar>
 
                         </router-link>
@@ -112,8 +113,8 @@
                 </ul>
 
                 <div>
-                <LanguageSwitcher /> 
-            </div>
+                    <LanguageSwitcher />
+                </div>
             </div>
         </div>
     </nav>
@@ -137,7 +138,8 @@ export default {
     },
     components: {
         ProductSearch, // Register the ProductSearch component
-        LanguageSwitcher
+        LanguageSwitcher,
+        
     },
     computed: {
         ...mapGetters(['isLoggedIn']), // Map isLoggedIn getter
@@ -176,13 +178,13 @@ export default {
     created() {
         this.checkAuthentication(); // Check authentication status when the component is created
     },
-    
+
 }
 
 </script>
 
 <style scoped>
 .custom-dropdown-menu {
-    min-width: 200px; 
+    min-width: 200px;
 }
 </style>
