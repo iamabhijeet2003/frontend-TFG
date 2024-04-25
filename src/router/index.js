@@ -91,12 +91,14 @@ const routes = [
     {
         path: '/order-confirmation/:orderId', // Dynamic segment for order ID
         name: 'OrderConfirmation',
-        component: () => import('../views/OrderConfirmationView.vue')
+        component: () => import('../views/OrderConfirmationView.vue'),
+        meta: { requiresAuth: true }
     },
     {
         path: '/contact',
         name: 'contact',
         component: () => import('../views/ContactForm.vue'),
+        meta: { requiresAuth: true }
     },
     {
         path: '/politicas/politica-privacidad',
@@ -107,12 +109,13 @@ const routes = [
         path: '/orders',
         name: 'Orders',
         component: UserOrders,
-        meta: { requiresAuth: true }, // Add this meta field if authentication is required to access orders
+        meta: { requiresAuth: true },
       },
       {
         path: '/product/search',
         name: 'ProductSearch',
         component: ProductSearch,
+        meta: { requiresAuth: true }
       },
 
 ]
