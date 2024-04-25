@@ -13,7 +13,8 @@
     "logout": "Cerrar sesión",
     "my_orders": "Mis pedidos",
     "my_profile": "Mi perfil",
-    "cart": "Carrito"
+    "cart": "Carrito",
+    "contact":"Contacto"
   },
   "banner": {
     "products": "Productos",
