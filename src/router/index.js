@@ -1,15 +1,13 @@
 // frontend/src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 //import store from '../store/';
 import { authMiddleware } from '../middleware/auth.js';
-import UserOrders from '../views/UserOrders.vue';
-import ProductSearch from '@/components/product/ProductSearch.vue';
 const routes = [
     {
         path: '/',
         name: 'Home',
-        component: HomeView,
+        component: () => import('../views/HomeView.vue'),
+        //meta: { requiresAuth: true }
     },
     {
         path: '/products',
@@ -108,13 +106,13 @@ const routes = [
     {
         path: '/orders',
         name: 'Orders',
-        component: UserOrders,
+        component: ()=> import('../views/UserOrders.vue'),
         meta: { requiresAuth: true },
       },
       {
         path: '/product/search',
         name: 'ProductSearch',
-        component: ProductSearch,
+        component: () => import('@/components/product/ProductSearch.vue'),
         meta: { requiresAuth: true }
       },
 
