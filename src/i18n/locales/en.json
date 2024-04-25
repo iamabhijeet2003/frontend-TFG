@@ -13,7 +13,8 @@
     "logout": "Logout",
     "my_orders": "My Orders",
     "my_profile": "My Profile",
-    "cart": "Cart"
+    "cart": "Cart",
+    "contact":"Contact"
   },
   "banner": {
     "products": "Products",
