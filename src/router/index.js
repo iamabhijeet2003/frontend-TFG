@@ -115,6 +115,11 @@ const routes = [
         component: () => import('@/components/product/ProductSearch.vue'),
         meta: { requiresAuth: true }
       },
+      {
+        path: "/:catchAll(.*)",
+        name: "NotFound",
+        component: () => import('@/components/errors/NotFound404.vue'),
+      }
 
 ]
 
