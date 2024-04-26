@@ -44,5 +44,20 @@
   },
   "payment_methods": {
     "title": "Payment Methods"
+  },
+  "footer": {
+    "store_name": "Abhi's Store",
+    "store_description": "Your trusted store with the best products in the technology sector.",
+    "contact_us": "Contact Us",
+    "products": "Products",
+    "useful_links": "Useful Links",
+    "policies": "Policies",
+    "privacy_policy": "Privacy Policy",
+    "copyright": "© 2024 Abhijeet Singh",
+     "contact": "Contact",
+    "address": "Cami La Dula S/N I.E.S Jaume II El Just",
+    "email": "abhijeet3016@gmail.com",
+    "phone": "+34 000 000 66",
+    "fax": "+34 000 000 66"
   }
 }
