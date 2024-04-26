@@ -1,5 +1,5 @@
 <template>
-  <div class="services">
+  <div class="services my-5">
     <div v-for="(service, index) in services" :key="index" class="service">
       <img :src="service.icon" class="service-icon rounded-circle" :alt="service.title">
       <p class="service-title fw-bold fs-5">{{ $t('services.' + service.translation_key) }}</p>
