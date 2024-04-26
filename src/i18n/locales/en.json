@@ -41,5 +41,8 @@
     "title": "iPad",
     "description": "Light. Bright. Full of might.",
     "buy_now": "Buy >"
+  },
+  "payment_methods": {
+    "title": "Payment Methods"
   }
 }
