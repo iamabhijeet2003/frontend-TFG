@@ -1,6 +1,6 @@
 <template>
 
-  <div class="my-5">
+  <div class="mt-5">
     <!-- Footer -->
     <footer class="text-center text-lg-start text-white" style="background-color: #0061b0;">
       <!-- Grid container -->
