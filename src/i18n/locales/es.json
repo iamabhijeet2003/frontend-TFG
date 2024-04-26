@@ -89,6 +89,34 @@
     "repairs": "Reparaciones",
     "apple_services": "Servicios de Apple",
     "repurchase": "Recompra"
+  },
+  "newsletter": {
+    "subscribeTitle": "Suscríbete a nuestro boletín.",
+    "subscribeDescription": "¡Regístrate para obtener ofertas exclusivas, lanzamientos de productos y noticias internas! Obtén acceso a descuentos especiales y mantente informado sobre las últimas tendencias. ¡Únete a nuestra comunidad hoy mismo!",
+    "namePlaceholder": "Ingresa tu nombre",
+    "formname":"Nombre",
+    "emailPlaceholder": "Ingresa tu correo electrónico",
+    "subscribeButton": "Suscribirse",
+    "weeklyArticles": {
+      "title": "Artículos semanales",
+      "description": "Mantente actualizado con nuestros artículos semanales que cubren una variedad de temas en el mundo de los productos tecnológicos."
+    },
+    "noSpam": {
+      "title": "Sin spam",
+      "description": "Solo ofrecemos contenido valioso y ofertas exclusivas adaptadas a tus intereses."
+    },
+    "subscriptionConfirmed": {
+      "title": "¡Suscripción Confirmada!",
+      "message": "Gracias por suscribirte a nuestro boletín."
+    },
+    "subscriptionFailed": {
+      "title": "Error en la suscripción",
+      "message": "Lo sentimos, no pudimos procesar tu suscripción en este momento. Por favor, inténtalo de nuevo más tarde."
+    },
+    "error": {
+      "title": "Error",
+      "message": "Se produjo un error al procesar tu suscripción. Por favor, inténtalo de nuevo más tarde."
+    }
   }
   
 }
