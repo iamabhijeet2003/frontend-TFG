@@ -31,5 +31,10 @@
     "exploreLatestProducts": "Explore the latest Samsung products",
     "discoverNewestOfferings": "Discover the newest offerings from Samsung and stay ahead with cutting-edge technology",
     "exploreNow": "Explore Now"
+  },
+  "apple_hero": {
+    "title": "iPhone 15 Pro",
+    "description": "A total powerhouse.",
+    "buy_now": "Buy >"
   }
 }
