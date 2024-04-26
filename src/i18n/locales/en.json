@@ -80,5 +80,14 @@
       "label": "Customer Support:",
       "value": "24/7"
     }
+  },
+  "services": {
+    "title":"Our Services",
+    "all_services": "All Our Services",
+    "guarantees": "Guarantees",
+    "financing": "Financing",
+    "repairs": "Repairs",
+    "apple_services": "Apple Services",
+    "repurchase": "Repurchase"
   }
 }
