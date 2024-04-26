@@ -12,22 +12,22 @@
             <!-- Grid column -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
               <h3 class="text-uppercase mb-4 font-weight-bold">
-                La Tienda de Abhi
+                {{ $t('footer.store_name') }}
               </h3>
               <p>
-                Tu tienda de confianza con los mejores productos en el sector de la tecnologia.
+                {{ $t('footer.store_description') }}
               </p>
 
               <hr>
 
               <div>
-                <h3>Contacta con nosotros</h3>
+                <h3> {{ $t('footer.contact_us') }}</h3>
 
                 <router-link to="/contact" class="link text-white">
                   <span>
                     <i class="bi bi-chat-left-text fs-1 me-2"></i>
                   </span>
-                  <span class="fs-4">Formulario de Contacto</span>
+                  <span class="fs-4">{{ $t('footer.contact_form') }}</span>
                 </router-link>
               </div>
             </div>
@@ -38,18 +38,12 @@
 
             <!-- Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+              <h6 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.products') }}</h6>
               <p>
-                <router-link to="/products" class="text-white">Pagina de Productos</router-link>
+                <router-link to="/products" class="text-white">{{ $t('footer.product_page') }}</router-link>
               </p>
               <p>
-                <a class="text-white">MDWordPress</a>
-              </p>
-              <p>
-                <a class="text-white">BrandFlow</a>
-              </p>
-              <p>
-                <a class="text-white">Bootstrap Angular</a>
+                <router-link to="/offers" class="text-white">{{ $t('footer.offers') }}</router-link>
               </p>
             </div>
             <!-- Grid column -->
@@ -59,39 +53,24 @@
             <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">
-                Useful links
+                {{ $t('footer.useful_links') }}
               </h6>
               <p>
-                <a class="text-white">Your Account</a>
+                <router-link to="/profile" class="text-white">{{ $t('footer.profile') }}</router-link>
               </p>
               <p>
-                <a class="text-white">Become an Affiliate</a>
-              </p>
-              <p>
-                <a class="text-white">Shipping Rates</a>
-              </p>
-              <p>
-                <a class="text-white">Ayuda</a>
+                <router-link to="/cart" class="text-white">{{ $t('footer.cart') }}</router-link>
               </p>
             </div>
             <hr class="w-100 clearfix d-md-none my-3" />
 
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">
-                Politicas
+                {{ $t('footer.policies') }}
               </h6>
               <p>
-                <router-link to="/politicas/politica-privacidad" class="text-white">Politica de privacidad</router-link>
+                <router-link to="/politicas/politica-privacidad" class="text-white">{{ $t('footer.privacy_policy') }}</router-link>
 
-              </p>
-              <p>
-                <a class="text-white">Become an Affiliate</a>
-              </p>
-              <p>
-                <a class="text-white">Shipping Rates</a>
-              </p>
-              <p>
-                <a class="text-white">Ayuda</a>
               </p>
             </div>
 
