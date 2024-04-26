@@ -44,5 +44,20 @@
   },
   "payment_methods": {
     "title": "Métodos de Pago"
+  },
+  "footer": {
+    "store_name": "La Tienda de Abhi",
+    "store_description": "Tu tienda de confianza con los mejores productos en el sector de la tecnología.",
+    "contact_us": "Contacta con nosotros",
+    "products": "Productos",
+    "useful_links": "Enlaces Útiles",
+    "policies": "Políticas",
+    "privacy_policy": "Política de privacidad",
+    "copyright": "© 2024 Abhijeet Singh",
+     "contact": "Contacto",
+    "address": "Cami La Dula S/N I.E.S Jaume II El Just",
+    "email": "abhijeet3016@gmail.com",
+    "phone": "+34 000 000 66",
+    "fax": "+34 000 000 66"
   }
 }
