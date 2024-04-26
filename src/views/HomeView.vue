@@ -35,7 +35,7 @@
       <HomeStats></HomeStats>
     </div>
     <div style="background-image: linear-gradient( 184.1deg,  rgba(249,255,182,1) 44.7%, rgba(226,255,172,1) 67.2% );" class="my-3">
-      <h3 class="h3 ms-5 mt-4 fw-bolder fs-2 text-center">Nuestros servicios</h3>
+      <h3 class="h3 ms-5 mt-4 fw-bolder fs-2 text-center">{{ $t('services.title') }}</h3>
     <Servicios></Servicios>
     </div>
 
