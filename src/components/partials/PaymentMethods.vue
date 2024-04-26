@@ -1,6 +1,6 @@
 <template>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-  <h2 class="h2 fw-bold text-center my-5">Metodos de Pago</h2>
+  <h2 class="h2 fw-bold text-center my-5">{{ $t('payment_methods.title') }}</h2>
   <div class="container mx-auto px-3">
     <div class="row justify-content-center">
       <div class="col">
