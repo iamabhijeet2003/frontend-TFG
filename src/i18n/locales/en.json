@@ -89,5 +89,33 @@
     "repairs": "Repairs",
     "apple_services": "Apple Services",
     "repurchase": "Repurchase"
+  },
+  "newsletter": {
+    "subscribeTitle": "Subscribe to our newsletter.",
+    "subscribeDescription": "Sign up for exclusive deals, product launches, and insider news! Get access to special discounts and stay informed on the latest trends. Join our community today.",
+    "namePlaceholder": "Enter your name",
+    "formname":"Name",
+    "emailPlaceholder": "Enter your email",
+    "subscribeButton": "Subscribe",
+    "weeklyArticles": {
+      "title": "Weekly articles",
+      "description": "Stay updated with our weekly articles covering a variety of topics in the world of tech products."
+    },
+    "noSpam": {
+      "title": "No spam",
+      "description": "We only deliver valuable content and exclusive offers tailored to your interests."
+    },
+    "subscriptionConfirmed": {
+      "title": "Subscription Confirmed!",
+      "message": "Thank you for subscribing to our newsletter."
+    },
+    "subscriptionFailed": {
+      "title": "Subscription Failed",
+      "message": "Sorry, we could not process your subscription at this time. Please try again later."
+    },
+    "error": {
+      "title": "Error",
+      "message": "An error occurred while processing your subscription. Please try again later."
+    }
   }
 }
