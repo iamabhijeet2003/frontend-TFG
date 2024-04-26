@@ -5,23 +5,23 @@
                 class="tw-mx-auto tw-grid tw-max-w-2xl tw-grid-cols-1 tw-gap-x-8 tw-gap-y-16 lg:tw-max-w-none lg:tw-grid-cols-2">
                 <div class="tw-max-w-xl lg:tw-max-w-lg">
                     <h2 class="tw-text-3xl tw-font-bold tw-tracking-tight tw-text-white sm:tw-text-4xl">
-                        Subscribe to our newsletter.
+                        <!-- {{ $t('newsletter.')}} -->
+                        {{ $t('newsletter.subscribeTitle')}}
                     </h2>
                     <p class="tw-mt-4 tw-text-lg tw-leading-8 tw-text-gray-300">
-                        Sign up for exclusive deals, product launches, and insider news! Get access to special discounts 
-                        and stay informed on the latest trends. Join our community today
+                      {{ $t('newsletter.subscribeDescription')}}
                     </p>
                     <div class="tw-mt-6 tw-max-w-md">
                         <div class="tw-flex tw-gap-x-4">
                             <label  for="name" 
-                            class="tw-sr-only">Name</label>
+                            class="tw-sr-only">{{ $t('newsletter.formname')}}</label>
                             <input  id="name" 
                                     name="name" 
                                     type="text" 
                                     autocomplete="name"
                                     v-model="formData.name"
                                     class="tw-min-w-0 tw-flex-auto tw-rounded-md tw-border-0 tw-bg-white/5 tw-px-3.5 tw-py-2 tw-text-white tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-white/10 tw-focus:ring-2 tw-focus:ring-inset tw-focus:ring-indigo-500 sm:tw-text-sm sm:tw-leading-6"
-                                    placeholder="Enter your name" 
+                                    :placeholder="$t('newsletter.namePlaceholder')" 
                             />
                         </div>
                         <div class="tw-flex tw-mt-4 tw-gap-x-4">
@@ -35,14 +35,14 @@
                                     autocomplete="email"
                                     v-model="formData.email"
                                     class="tw-min-w-0 tw-flex-auto tw-rounded-md tw-border-0 tw-bg-white/5 tw-px-3.5 tw-py-2 tw-text-white tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-white/10 tw-focus:ring-2 tw-focus:ring-inset tw-focus:ring-indigo-500 sm:tw-text-sm sm:tw-leading-6"
-                                    placeholder="Enter your email" 
+                                    :placeholder="$t('newsletter.emailPlaceholder')" 
                             />
                         </div>
                         <button type="submit"
                                 class="tw-block tw-mt-4 tw-rounded-md tw-bg-indigo-500 tw-px-3.5 tw-py-2.5 tw-text-sm tw-font-semibold tw-text-white tw-shadow-sm tw-hover:bg-indigo-400 tw-focus-visible:tw-outline tw-focus-visible:tw-outline-2 tw-focus-visible:tw-outline-offset-2 tw-focus-visible:tw-outline-indigo-500"
                                 @click="subscribe"
                         >
-                            Subscribe
+                            {{ $t('newsletter.subscribeButton')}}
                         </button>
                     </div>
 
@@ -53,18 +53,16 @@
                         <div class="tw-rounded-md tw-bg-white/5 tw-p-2 tw-ring-1 tw-ring-white/10">
                             <i class="bi bi-calendar3 w-h-6 tw-w-6 tw-text-white" aria-hidden="true"></i>
                         </div>
-                        <dt class="tw-mt-4 tw-font-semibold tw-text-white">Weekly articles</dt>
-                        <dd class="tw-mt-2 tw-leading-7 tw-text-gray-400">Stay updated with our weekly articles covering
-                            a variety of topics in the world of tech products.</dd>
+                        <dt class="tw-mt-4 tw-font-semibold tw-text-white">{{ $t('newsletter.weeklyArticles.title')}}</dt>
+                        <dd class="tw-mt-2 tw-leading-7 tw-text-gray-400">{{ $t('newsletter.weeklyArticles.description')}}</dd>
                     </div>
 
                     <div class="tw-flex tw-flex-col tw-items-start">
                         <div class="tw-rounded-md tw-bg-white/5 tw-p-2 tw-ring-1 tw-ring-white/10">
                             <i class="bi bi-exclamation-octagon tw-h-6 tw-w-6 tw-text-white" aria-hidden="true"></i>
                         </div>
-                        <dt class="tw-mt-4 tw-font-semibold tw-text-white">No spam</dt>
-                        <dd class="tw-mt-2 tw-leading-7 tw-text-gray-400">We only deliver valuable content and exclusive
-                            offers tailored to your interests.</dd>
+                        <dt class="tw-mt-4 tw-font-semibold tw-text-white">{{ $t('newsletter.noSpam.title')}}</dt>
+                        <dd class="tw-mt-2 tw-leading-7 tw-text-gray-400">{{ $t('newsletter.noSpam.description')}}</dd>
                     </div>
 
                 </dl>
