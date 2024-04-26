@@ -36,5 +36,10 @@
     "title": "iPhone 15 Pro",
     "description": "Una verdadera bestia.",
     "buy_now": "Comprar >"
+  },
+  "ipad_hero": {
+    "title": "iPad",
+    "description": "Ligero. Brillante. Lleno de poder.",
+    "buy_now": "Comprar >"
   }
 }
