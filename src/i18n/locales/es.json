@@ -31,5 +31,10 @@
     "exploreLatestProducts": "Explora los últimos productos de Samsung",
     "discoverNewestOfferings": "Descubre las últimas ofertas de Samsung y mantente al tanto de la tecnología de vanguardia",
     "exploreNow": "Explorar ahora"
+  },
+  "apple_hero": {
+    "title": "iPhone 15 Pro",
+    "description": "Una verdadera bestia.",
+    "buy_now": "Comprar >"
   }
 }
