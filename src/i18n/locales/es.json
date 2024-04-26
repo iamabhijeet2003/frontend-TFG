@@ -41,5 +41,8 @@
     "title": "iPad",
     "description": "Ligero. Brillante. Lleno de poder.",
     "buy_now": "Comprar >"
+  },
+  "payment_methods": {
+    "title": "Métodos de Pago"
   }
 }
