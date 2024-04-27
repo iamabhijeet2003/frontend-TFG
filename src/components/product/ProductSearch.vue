@@ -51,6 +51,7 @@
 <script>
 import axios from 'axios';
 import CartBTN from '@/components/CartBTN.vue';
+import Swal from 'sweetalert2';
 export default {
   data() {
     return {
@@ -78,6 +79,17 @@ export default {
         this.searchResults = response.data['hydra:member'];
       } catch (error) {
         console.error('Error searching products:', error);
+        if (error.response && error.response.status === 401) {
+          // Display a SweetAlert notification for unauthorized access
+          Swal.fire({
+            title: 'You are not logged in!',
+            text: 'Please log in to search for products.',
+            icon: 'warning',
+            confirmButtonText: 'Log In',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+          });
+        }
       }
     },
     viewProduct(product) {
