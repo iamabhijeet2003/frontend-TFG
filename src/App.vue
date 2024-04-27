@@ -2,6 +2,7 @@
 <template>
   <div id="app">
     <NavBar></NavBar>
+    <OnlineOffline></OnlineOffline>
     <router-view ></router-view>
     <FooterPart></FooterPart>
   </div>
@@ -11,6 +12,7 @@
 import NavBar from './components/NavBar.vue';
 import FooterPart from './components/partials/footer/FooterPart.vue';
 import { mapGetters, mapActions } from 'vuex';
+import OnlineOffline from '@/OfflineOnline.vue';
 export default {
   name: 'App',
   async mounted() {
@@ -19,6 +21,7 @@ export default {
   components:{
     NavBar,
     FooterPart,
+    OnlineOffline
   },
   data(){
     return {
