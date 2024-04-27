@@ -55,7 +55,7 @@
     <div class="row g-4" v-if="!loading && products.length">
       <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products"
         :key="product['@id']">
-        <div class="card border border-3">
+        <div class="card border-gradient-purple">
           <img v-lazy="product.image" class="card-img-top img-fluid" alt="Product Image" @click="viewProduct(product)">
           <div class="card-body">
             <h5 class="card-title fw-bold h5 text-center" @click="viewProduct(product)">{{ product.name }}</h5>
@@ -303,4 +303,12 @@ export default {
     transform: rotate(360deg);
   }
 }
+
+.border-gradient-purple {
+  border: 3px solid transparent;
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+  border-image-slice: 1;
+  border-radius: 1em;
+}
+
 </style>
