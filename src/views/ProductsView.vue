@@ -2,23 +2,23 @@
 <template>
   <div class="container-fluid px-5 mt-5">
     <div class="row">
-      <div class="col">
+      <div class="col-md-4 mb-3 ">
         <!-- Dropdown button for filtering by brand -->
-        <div class="col">
-          <div class="dropdown mb-3">
-            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="brandDropdown"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-filter fs-5">Filter By Brand</i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="brandDropdown">
-              <li v-for="brand in brands" :key="brand.id">
-                <button @click="filterByBrand(brand.id)" class="dropdown-item">{{ brand.name }}</button>
-              </li>
-            </ul>
-          </div>
+        <div class="dropdown">
+          <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="brandDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-filter fs-5">Filter By Brand</i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="brandDropdown">
+            <li v-for="brand in brands" :key="brand.id">
+              <button @click="filterByBrand(brand.id)" class="dropdown-item">{{ brand.name }}</button>
+            </li>
+          </ul>
         </div>
+      </div>
+      <div class="col-md-4 mb-3">
         <!-- Dropdown button for sorting by price -->
-        <div class="dropdown mb-3">
+        <div class="dropdown">
           <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="priceDropdown"
             data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-filter fs-5">Order By</i>
@@ -35,9 +35,9 @@
           </ul>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4 mb-3">
         <!-- Dropdown button for filtering by category -->
-        <div class="dropdown mb-3">
+        <div class="dropdown">
           <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="categoryDropdown"
             data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-filter fs-5">Filter By Category</i>
@@ -50,12 +50,13 @@
         </div>
       </div>
     </div>
+    <hr class="mb-3">
     <div v-if="loading"><span class="loader"></span></div>
     <div class="row g-4" v-if="!loading && products.length">
       <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-around" v-for="product in products"
         :key="product['@id']">
         <div class="card border border-3">
-          <img :src="product.image" class="card-img-top img-fluid" alt="Product Image" @click="viewProduct(product)">
+          <img v-lazy="product.image" class="card-img-top img-fluid" alt="Product Image" @click="viewProduct(product)">
           <div class="card-body">
             <h5 class="card-title fw-bold h5 text-center" @click="viewProduct(product)">{{ product.name }}</h5>
             <!-- <p class="card-text">{{ product.description }}</p> -->
@@ -137,20 +138,29 @@ export default {
     async fetchProducts(page = 1) {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`${API_ROOT_URL}/products?page=${page}`, {
+        let url = `${API_ROOT_URL}/products?page=${page}`;
+
+        // Check if a brand ID is present in the query parameter
+        const brandId = this.$route.query.brand;
+        if (brandId) {
+          url += `&brand=${brandId}`;
+        }
+
+        const response = await axios.get(url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         this.products = response.data['hydra:member'];
         this.currentPage = page;
-        this.totalPages = Math.ceil(response.data['hydra:totalItems'] / 10); // the api returns 10 products per page
+        this.totalPages = Math.ceil(response.data['hydra:totalItems'] / 10);
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {
         this.loading = false;
       }
     },
+
     async fetchBrands() {
       try {
         const token = localStorage.getItem('token');
@@ -173,7 +183,7 @@ export default {
             Authorization: `Bearer ${token}`,
           },
         });
-        
+
         this.products = response.data['hydra:member'];
         this.totalPages = Math.ceil(response.data['hydra:totalItems'] / 10);
       } catch (error) {
@@ -273,7 +283,6 @@ export default {
 </script>
 
 <style scoped>
-/* You can add custom styles here if needed */
 .loader {
   width: 48px;
   height: 48px;
