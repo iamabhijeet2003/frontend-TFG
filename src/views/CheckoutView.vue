@@ -1,22 +1,32 @@
 <!-- frontend-proyecto-02/src/views/CheckoutView.vue -->
 <template>
-  <div>
-    <h1>Checkout Page</h1>
-    <form @submit.prevent="submitOrder">
+  <div class="tw-container tw-mt-12 tw-form-section tw-mx-auto tw-px-4 tw-font-sans">
+
+    <form @submit.prevent="submitOrder"
+      class="tw-shadow-md tw-rounded-lg tw-px-8 tw-py-6 tw-mb-4 tw-border-2 tw-border-gray-200">
+      <h1 class="tw-text-xl tw-mb-8 tw-mx-auto tw-text-center tw-font-bold tw-text-purple-600">Checkout Page</h1>
       <div class="mb-3">
         <label for="totalPrice" class="form-label">Total Price</label>
-        <input type="text" class="form-control" id="totalPrice" v-model="formData.totalPrice" readonly>
+        <input type="text"
+          class="tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500"
+          id="totalPrice" v-model="formData.totalPrice" readonly>
       </div>
       <div class="mb-3">
-        <input type="datetime-local" class="form-control" v-model="formData.created_at">
+        <input type="datetime-local"
+          class="tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500"
+          v-model="formData.created_at">
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
-        <input type="text" class="form-control" id="address" v-model="formData.address">
+        <input type="text"
+          class="tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500"
+          id="address" v-model="formData.address">
       </div>
       <div class="mb-3">
         <label for="city" class="form-label">city</label>
-        <input type="text" class="form-control" id="city" v-model="formData.city">
+        <input type="text"
+          class="tw-ml-1 tw-mt-5 tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500"
+          id="city" v-model="formData.city" >
       </div>
       <div class="mb-3">
         <label for="province" class="form-label">Province</label>
@@ -85,12 +95,16 @@
         <label for="pc" class="form-label">mobile</label>
         <input type="number" class="form-control" id="pc" v-model="formData.mobile">
       </div>
-      <button type="submit" class="btn btn-primary">Place Order</button>
+      <button type="submit"
+        class="tw-cursor-pointer tw-mt-7 tw-w-full tw-shadow tw-bg-purple-600 tw-hover:bg-purple-600 tw-focus:tw-shadow-outline tw-focus:tw-outline-none tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-mt-4">Place
+        Order
+      </button>
     </form>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import axios from 'axios';
 import router from '@/router';
 export default {
@@ -181,13 +195,12 @@ export default {
       } catch (error) {
         console.error('Error posting to payment entity:', error);
       }
-    }
+    },
   },
   mounted() {
     this.postToPaymentEntity();
     this.formData.created_at = new Date().toISOString().slice(0, 16);
     this.formData.totalPrice = this.$store.state.cartTotal;
-
     // Parse the URL to get the query parameters
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -200,6 +213,37 @@ export default {
     } else {
       console.error('Session ID not found in the URL');
     }
+
+    const addressAutocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("address")
+  );
+  addressAutocomplete.setComponentRestrictions({ country: ["ES"] });
+
+  const cityAutocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("city")
+  );
+
+  const postalCodeAutocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("postalCode")
+  );
+
+  // Listen for place_changed event on addressAutocomplete
+  addressAutocomplete.addListener("place_changed", () => {
+    const place = addressAutocomplete.getPlace();
+    // Update city and postal code fields if place data is available
+    if (place.address_components) {
+      for (const component of place.address_components) {
+        if (component.types.includes("locality")) {
+          this.formData.city = component.long_name;
+        } else if (component.types.includes("postal_code")) {
+          this.formData.postalCode = component.long_name;
+        } else if (component.types.includes("administrative_area_level_1")) {
+          this.formData.province = component.long_name;
+        }
+      }
+    }
+  });
+
   }
 };
 
@@ -222,7 +266,7 @@ async function createOrder(orderData) {
 async function createOrderDetails(orderDetailsData) {
   try {
     const token = localStorage.getItem('token');
-    await axios.post('http://127.0.0.1:8000/api/order_details', orderDetailsData, {
+    await axios.post('http://127.0.0.1:8000/api/order_detailss', orderDetailsData, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/ld+json'
