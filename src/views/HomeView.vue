@@ -20,7 +20,9 @@
       <IpadBanner></IpadBanner>
     </div>
 
-    
+    <div>
+      <GoToTop></GoToTop>
+    </div>
     <div>
       <!-- <h2 class="h2 text-center py-3 my-5 text-white fw-bolder" style="background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgba(0,8,120,1) 0%, rgba(95,184,224,1) 99.7% );">Lo que opinan sobre nosotros: </h2> -->
       <TestimoniosClientes></TestimoniosClientes>
@@ -28,9 +30,6 @@
       
     </div>
    
-
-
-
     <div>
       <HomeStats></HomeStats>
     </div>
@@ -64,6 +63,7 @@
   import IpadBanner from '@/components/partials/IpadBanner.vue'
   import FrequentlyAskedQuestions from '@/components/partials/FrequentlyAskedQuestions.vue'
   import NewsLetter from '@/components/newsletter/NewsLetter.vue'
+  import GoToTop from '@/components/utils/GoToTop.vue';
   export default {
     data() {
       return {
@@ -81,27 +81,13 @@
       AppleHero,
       IpadBanner,
       FrequentlyAskedQuestions,
-      NewsLetter
+      NewsLetter,
+      GoToTop
     },
     mounted() {
       // this.fetchFeaturedProducts();
     },
     methods: {
-    //   async fetchFeaturedProducts() {
-    //   try {
-    //     const token = localStorage.getItem('token');
-    //     const response = await axios.get(`${API_ROOT_URL}/products?page=1`, {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     });
-    //     this.featuredProducts = response.data;
-    //   } catch (error) {
-    //     console.error('Error fetching products:', error);
-    //   } finally {
-    //     this.loading = false;
-    //   }
-    // },
     },
   };
   </script>
