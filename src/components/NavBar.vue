@@ -23,9 +23,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white fs-4" href="/products">{{ $t('navbar.products') }}</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-white fs-4" href="#">{{ $t('navbar.offers') }}</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fs-4" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
