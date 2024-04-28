@@ -1,7 +1,12 @@
 <template>
-    <div id="app">
-        <button ref="scrollTopBtn" @click="scrollToTop" id="scrollToTopBtn" title="Go to top"
-            class="btn btn-lg btn-primary">
+    <div>
+        <button 
+            ref="scrollTopBtn" 
+            @click="scrollToTop" 
+            id="scrollToTopBtn" 
+            title="Go to top"
+            class="btn btn-lg btn-primary"    
+        >
             <i class="bi bi-arrow-up"></i>
         </button>
     </div>
@@ -38,4 +43,5 @@ export default {
     right: 20px;
     z-index: 99;
 }
+
 </style>
