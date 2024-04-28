@@ -14,7 +14,13 @@
         </li>
       </ul>
       <router-link to="/" class="btn btn-primary mt-3">
-        Ya tenemos tu pedido, echa un vistazo a otros productos
+        <span class="tw-text-4xl tw-font-extrabold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-blue-600 tw-to-indigo-500">Ya tenemos tu pedido, echa un vistazo a otros productos</span>
+      </router-link>
+
+      <router-link to="/orders" class="btn btn-primary mt-3">
+        <span class="tw-text-4xl tw-font-extrabold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-blue-600 tw-to-indigo-500">
+          Ver Mis Pedidos
+        </span>
       </router-link>
     </div>
   </div>
@@ -33,7 +39,10 @@ export default {
   },
   mounted() {
     // Fetch order details
-    this.fetchOrderDetails();
+    this.fetchOrderDetails().then(() => {
+        // Clear cart after fetching order details
+        this.clearCart();
+    });
   },
   methods: {
     async fetchOrderDetails() {
@@ -46,19 +55,20 @@ export default {
           },
         });
 
-        // Extract items from the order data
-        // This is just an example, modify it according to your API response structure
         this.orderItems = response.data.items;
 
-        // Update order data
+        
         this.order = response.data;
-        // Clear cart data from local storage and Vuex store
 
       } catch (error) {
         console.error('Error fetching order details:', error);
       } finally {
         this.loading = false;
       }
+    },
+    clearCart() {
+      // Dispatch action to clear the cart
+      this.$store.dispatch('clearCart');
     },
   },
 };
