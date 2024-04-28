@@ -12,7 +12,7 @@
 import NavBar from './components/NavBar.vue';
 import FooterPart from './components/partials/footer/FooterPart.vue';
 import { mapGetters, mapActions } from 'vuex';
-import OnlineOffline from '@/OfflineOnline.vue';
+import OnlineOffline from '@/components/OfflineOnline.vue';
 export default {
   name: 'App',
   async mounted() {
