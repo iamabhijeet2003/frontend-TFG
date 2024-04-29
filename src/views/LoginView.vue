@@ -1,7 +1,7 @@
 <!-- frontend/src/views/LoginView.vue -->
 
 <template>
-  <div class="tw-flex font-poppins tw-items-center tw-justify-center">
+  <div class="tw-flex font-poppins tw-items-center tw-justify-center container-fluid login-container">
     <div class="tw-flex tw-justify-center tw-items-center tw-dark:bg-gray-800">
       <div class="tw-grid tw-gap-10">
         <div id="back-div" class="tw-bg-gradient-to-r tw-from-blue-500 tw-to-purple-500 tw-rounded-[26px] tw-m-5">
@@ -168,9 +168,9 @@ export default {
           localStorage.setItem("user_id", user_id);
 
           // Redirect to products page on successful login
-          this.$router.push({ name: 'products' });
-          console.log("Login successful!");
-          this.$router.push({ name: 'products' });
+          //this.$router.push({ name: 'products' });
+          //console.log("Login successful!");
+          this.$router.push({ name: 'Home' });
           console.log("Login successful!");
         } else {
 
@@ -218,5 +218,12 @@ export default {
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure the container takes up the full viewport height */
+  
 }
 </style>
