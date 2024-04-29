@@ -1,10 +1,10 @@
 <!--App.vue-->
 <template>
   <div id="app">
-    <NavBar></NavBar>
+    <NavBar v-if="$route.name !== 'Login'"></NavBar>
     <OnlineOffline></OnlineOffline>
     <router-view ></router-view>
-    <FooterPart></FooterPart>
+    <FooterPart v-if="$route.name !== 'Login'"></FooterPart>
   </div>
 </template>
 
