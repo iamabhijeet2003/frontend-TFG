@@ -31,10 +31,13 @@
           </div>
 
           <button type="submit" class="tw-bg-gradient-to-r tw-dark:text-gray-300 tw-from-blue-500 tw-to-purple-500 tw-shadow-lg tw-mt-6 tw-p-2 tw-text-white tw-rounded-lg tw-w-full tw-hover:scale-105 tw-hover:from-purple-500 tw-hover:to-blue-500 tw-transition tw-duration-300 tw-ease-in-out">Register</button>
+          <div class="tw-flex tw-flex-col tw-mt-4 tw-items-center tw-justify-center tw-text-sm">
           <p class="footer text-black">¿Ya tienes cuenta? <router-link to="/login"
               class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Inicia
               Sessión</router-link>
           </p>
+          </div>
+          
           <div v-if="message" :class="messageClass">
             <p class="text-black">{{ message }}</p>
             <router-link v-if="showRedirectButton" to="/login">
@@ -42,6 +45,49 @@
             </router-link>
           </div>
         </form>
+
+        <!-- Third Party Authentication Options -->
+        <div id="third-party-auth" class="tw-flex tw-items-center tw-justify-center tw-mt-5 tw-flex-wrap">
+              <button href="#"
+                class="tw-hover:tw-scale-105 tw-ease-in-out tw-duration-300 tw-shadow-lg tw-p-2 tw-rounded-lg tw-m-1">
+                <img class="tw-max-w-[25px]" src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
+                  alt="Google" />
+              </button>
+
+              <button href="#"
+                class="tw-hover:tw-scale-105 tw-ease-in-out tw-duration-300 tw-shadow-lg tw-p-2 tw-rounded-lg tw-m-1">
+                <img class="tw-max-w-[25px] tw-filter tw-dark:tw-invert"
+                  src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/" alt="Github" />
+              </button>
+              <button href="#"
+                class="tw-hover:tw-scale-105 tw-ease-in-out tw-duration-300 tw-shadow-lg tw-p-2 tw-rounded-lg tw-m-1">
+                <img class="tw-max-w-[25px]" src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/"
+                  alt="Facebook" />
+              </button>
+
+              <button href="#"
+                class="tw-hover:tw-scale-105 tw-ease-in-out tw-duration-300 tw-shadow-lg tw-p-2 tw-rounded-lg tw-m-1">
+                <img class="tw-max-w-[25px]" src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/"
+                  alt="apple" />
+              </button>
+            </div>
+
+
+            <div class="tw-text-gray-500 tw-flex tw-text-center tw-flex-col tw-mt-4 tw-items-center tw-text-sm">
+              <p class="tw-cursor-default mb-3">
+                By registering, you agree to our
+                <a class="tw-group tw-text-blue-400 tw-transition-all tw-duration-100 tw-ease-in-out" href="#">
+                  <span
+                    class="tw-cursor-pointer tw-bg-left-bottom tw-bg-gradient-to-r tw-from-blue-400 tw-to-blue-400 tw-bg-[length:0%_2px] tw-bg-no-repeat tw-group-hover:tw-bg-[length:100%_2px] tw-transition-all tw-duration-500 tw-ease-out">Terms</span>
+                </a>
+                and
+                <a class="tw-group tw-text-blue-400 tw-transition-all tw-duration-100 tw-ease-in-out" href="#">
+                  <span
+                    class="tw-cursor-pointer tw-bg-left-bottom tw-bg-gradient-to-r tw-from-blue-400 tw-to-blue-400 tw-bg-[length:0%_2px] tw-bg-no-repeat tw-group-hover:tw-bg-[length:100%_2px] tw-transition-all tw-duration-500 tw-ease-out">Privacy
+                    Policy</span>
+                </a>
+              </p>
+            </div>
       </div>
         </div>
         </div>
