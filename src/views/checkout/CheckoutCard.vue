@@ -30,7 +30,7 @@ export default {
                     amount_total: totalPrice,
                     created: created_at,
                     successUrl: `http://localhost:8080/checkout?session_id={CHECKOUT_SESSION_ID}`,
-                    cancelUrl: "http://localhost:8080/paymentmethod"
+                    cancelUrl: "http://localhost:8080/selectpayment"
                 };
 
                 // Make a request to your backend to fetch the dynamic checkout URL

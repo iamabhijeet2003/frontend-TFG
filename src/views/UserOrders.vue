@@ -56,7 +56,7 @@ export default {
   methods: {
     async fetchOrders() {
       try {
-        const userId = 22; // Replace with the actual user ID
+        const userId = localStorage.getItem('user_id');
         const response = await fetch(`http://localhost:8000/user/${userId}/orders`);
         if (!response.ok) {
           throw new Error('Failed to fetch orders');

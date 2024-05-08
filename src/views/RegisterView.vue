@@ -100,7 +100,7 @@
 <script>
 import axios from 'axios';
 import passwordMeter from "vue-simple-password-meter";
-
+import { API_ROOT_URL } from '@/apiConfig';
 export default {
   components: {
     passwordMeter
@@ -128,7 +128,7 @@ export default {
       console.log("Form Data:", this.formData);
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/users', {
+        const response = await axios.post(`${API_ROOT_URL}/users`, {
           "email": this.formData.email,
           "plainPassword": this.formData.plainPassword,
           "firstName": this.formData.firstName,
