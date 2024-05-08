@@ -11,6 +11,7 @@ export default createStore({
     token: null,
     isAuthenticated: false,
     locale: 'en',
+    username: null,
   },
   mutations: {
 
@@ -61,6 +62,9 @@ export default createStore({
     setToken(state, token) {
       state.token = token;
     },
+    setUsername(state, username) {
+      state.username = username; 
+    },
     setAuthentication(state, isAuthenticated) {
       state.isAuthenticated = isAuthenticated;
     },
@@ -82,11 +86,13 @@ export default createStore({
       commit('setToken', null); // Clear token in Vuex store
       commit('setAuthentication', false); // Set authentication status to false
       commit('setUser', null); // Clear user data
+      commit('setUsername', null);
       location.reload();
     },
     changeLocale({ commit }, locale) {
       commit('changeLocale', locale);
     },
+    
   },
   modules: {},
   getters: {
