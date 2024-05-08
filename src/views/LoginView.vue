@@ -121,6 +121,7 @@
 
 import { mapMutations } from "vuex";
 import { ParticlesBg } from "particles-bg-vue";
+import { API_URL_USER } from '@/apiUser';
 export default {
   data: () => {
     return {
@@ -143,7 +144,7 @@ export default {
       console.log("Password:", this.password);
 
       try {
-        const response = await fetch("http://localhost:8000/auth", {
+        const response = await fetch(`${API_URL_USER}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
