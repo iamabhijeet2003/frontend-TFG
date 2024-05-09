@@ -117,6 +117,11 @@
       "title": "Error",
       "message": "Se produjo un error al procesar tu suscripción. Por favor, inténtalo de nuevo más tarde."
     }
+  },
+  "greetings": {
+    "goodMorning": "Buenos días",
+    "goodAfternoon": "Buenas tardes",
+    "goodEvening": "Buenas noches",
+    "goodNight": "Buenas noches"
   }
-  
 }
