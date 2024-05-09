@@ -1,6 +1,9 @@
 <!--frontend/src/views/HomeView.vue-->
 <template>
-  
+  <div>
+    <UserGreet></UserGreet>
+  </div>
+
   <div>
     <BannerToProduct></BannerToProduct>
   </div>
@@ -64,6 +67,7 @@
   import FrequentlyAskedQuestions from '@/components/partials/FrequentlyAskedQuestions.vue'
   import NewsLetter from '@/components/newsletter/NewsLetter.vue'
   import GoToTop from '@/components/utils/GoToTop.vue';
+  import UserGreet from '@/components/partials/UserGreet.vue';
   export default {
     data() {
       return {
@@ -82,7 +86,8 @@
       IpadBanner,
       FrequentlyAskedQuestions,
       NewsLetter,
-      GoToTop
+      GoToTop,
+      UserGreet
     },
     mounted() {
       // this.fetchFeaturedProducts();
