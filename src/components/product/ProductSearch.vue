@@ -52,6 +52,8 @@
 import axios from 'axios';
 import CartBTN from '@/components/CartBTN.vue';
 import Swal from 'sweetalert2';
+import { API_ROOT_URL } from '@/apiConfig';
+  
 export default {
   data() {
     return {
@@ -71,7 +73,7 @@ export default {
     async searchProducts() {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:8000/api/products?name=${this.searchQuery}`, {
+        const response = await axios.get(`${API_ROOT_URL}/products?name=${this.searchQuery}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
