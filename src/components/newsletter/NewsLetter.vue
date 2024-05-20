@@ -78,6 +78,7 @@
 
 <script>
 import Swal from 'sweetalert2';
+import { API_ROOT_URL } from '@/apiConfig';
 export default {
   data() {
     return {
@@ -90,7 +91,7 @@ export default {
   methods: {
     async subscribe() {
       try {
-        const response = await fetch('http://localhost:8000/api/newsletters', {
+        const response = await fetch(`${API_ROOT_URL}/newsletters`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/ld+json'
