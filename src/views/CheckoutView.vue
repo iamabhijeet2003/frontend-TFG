@@ -107,6 +107,8 @@
 /* eslint-disable */
 import axios from 'axios';
 import router from '@/router';
+import { API_ROOT_URL } from '@/apiConfig';
+  
 export default {
   data() {
     return {
@@ -184,7 +186,7 @@ export default {
         };
         const token = localStorage.getItem('token');
         // Make a POST request to the payment entity endpoint
-        await axios.post('http://127.0.0.1:8000/api/payments', data, {
+        await axios.post(`${API_ROOT_URL}/payments`, data, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/ld+json'
@@ -250,7 +252,7 @@ export default {
 async function createOrder(orderData) {
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.post('http://127.0.0.1:8000/api/orders', orderData, {
+    const response = await axios.post(`${API_ROOT_URL}/orders`, orderData, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/ld+json'
@@ -266,7 +268,7 @@ async function createOrder(orderData) {
 async function createOrderDetails(orderDetailsData) {
   try {
     const token = localStorage.getItem('token');
-    await axios.post('http://127.0.0.1:8000/api/order_detailss', orderDetailsData, {
+    await axios.post(`${API_ROOT_URL}/order_detailss', orderDetailsData, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/ld+json'
