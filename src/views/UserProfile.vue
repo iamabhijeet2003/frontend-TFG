@@ -19,7 +19,7 @@
 
 <script>
 import axios from 'axios';
-
+import { API_ROOT_URL } from '@/apiConfig';
 export default {
   data() {
     return {
@@ -31,7 +31,7 @@ export default {
     try {
       const userId = localStorage.getItem('user_id');
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://127.0.0.1:8000/api/users/${userId}`, {
+      const response = await axios.get(`${API_ROOT_URL}/users/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
