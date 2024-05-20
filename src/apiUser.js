@@ -1,1 +1,1 @@
-export const API_URL_USER = "http://127.0.0.1:8000/auth"
+export const API_URL_USER = "http://20.86.128.120/auth"
