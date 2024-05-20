@@ -8,7 +8,7 @@
 
 <script>
 import axios from 'axios';
-
+import { ROOT_URL } from '@/BaseEndpoint';
 export default {
     data() {
         return {
@@ -29,12 +29,12 @@ export default {
                 const data = {
                     amount_total: totalPrice,
                     created: created_at,
-                    successUrl: `http://localhost:8080/checkout?session_id={CHECKOUT_SESSION_ID}`,
-                    cancelUrl: "http://localhost:8080/selectpayment"
+                    successUrl: `https://proyecto-final-abhi.vercel.app/checkout?session_id={CHECKOUT_SESSION_ID}`,
+                    cancelUrl: "https://proyecto-final-abhi.vercel.app/selectpayment"
                 };
 
                 // Make a request to your backend to fetch the dynamic checkout URL
-                const response = await axios.post('http://localhost:8000/stripe/create-checkout-session', data);
+                const response = await axios.post(`${ROOT_URL}/stripe/create-checkout-session`, data);
                 this.isLoading = false;
                 // Redirect the user to the Stripe Checkout page
                 window.location.href = response.data.url;
