@@ -40,7 +40,7 @@
 
 <script>
 import VueBarcode from '@chenfengyuan/vue-barcode';
-
+import { ROOT_URL } from '@/BaseEndpoint';
 export default {
   data() {
     return {
@@ -57,7 +57,7 @@ export default {
     async fetchOrders() {
       try {
         const userId = localStorage.getItem('user_id');
-        const response = await fetch(`http://localhost:8000/user/${userId}/orders`);
+        const response = await fetch(`${ROOT_URL}/user/${userId}/orders`);
         if (!response.ok) {
           throw new Error('Failed to fetch orders');
         }

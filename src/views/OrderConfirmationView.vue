@@ -44,7 +44,7 @@
 
 <script>
 import axios from 'axios';
-
+import { API_ROOT_URL } from '@/apiConfig';
 export default {
   data() {
     return {
@@ -62,7 +62,7 @@ export default {
       try {
         const orderId = this.$route.params.orderId;
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://127.0.0.1:8000/api/orders/${orderId}`, {
+        const response = await axios.get(`${API_ROOT_URL}/orders/${orderId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -21,7 +21,8 @@
 
 <script>
 import axios from 'axios';
-
+import { API_ROOT_URL } from '@/apiConfig';
+   
 export default {
   data() {
     return {
@@ -35,7 +36,7 @@ export default {
         const token = localStorage.getItem('token');
         const userid = localStorage.getItem('user_id'); // Get user ID from localStorage
         const productid = this.productId;
-        const response = await axios.post('http://localhost:8000/api/ratingss', {
+        const response = await axios.post(`${API_ROOT_URL}/ratingss`, {
           productId: `/api/products/${productid}`,
           userId: `/api/users/${userid}`,
           ratingValue: this.rating,

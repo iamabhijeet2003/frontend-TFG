@@ -47,6 +47,8 @@ import StoreMap from "./StoreMap.vue";
 //import UseEmail from "./UseEmail";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import { API_ROOT_URL } from '@/apiConfig';
+
 export default {
     name: 'ContactForm',
     data() {
@@ -75,7 +77,7 @@ export default {
                 message
             };
             const token = localStorage.getItem("token");
-            axios.post('http://127.0.0.1:8000/api/contacts', requestData,{
+            axios.post(`${API_ROOT_URL}/contacts`, requestData,{
                 headers:{
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/ld+json'
