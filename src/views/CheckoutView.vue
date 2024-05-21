@@ -16,21 +16,22 @@
           class="tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500"
           v-model="formData.created_at">
       </div>
+      <!-- Address -->
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
-        <input type="text"
-          class="tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500"
-          id="address" v-model="formData.address">
+        <input type="text" :class="{'is-invalid': errors.address}" class="tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500" id="address" v-model="formData.address">
+        <div class="invalid-feedback">{{ errors.address }}</div>
       </div>
+      
+      <!-- City -->
       <div class="mb-3">
-        <label for="city" class="form-label">city</label>
-        <input type="text"
-          class="tw-ml-1 tw-mt-5 tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500"
-          id="city" v-model="formData.city" >
+        <label for="city" class="form-label">City</label>
+        <input type="text" :class="{'is-invalid': errors.city}" class="tw-ml-1 tw-mt-5 tw-bg-gray-200 tw-border-2 tw-border-gray-200 tw-rounded tw-w-full tw-py-2 tw-px-4 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:bg-white tw-focus:border-purple-500" id="city" v-model="formData.city">
+        <div class="invalid-feedback">{{ errors.city }}</div>
       </div>
       <div class="mb-3">
         <label for="province" class="form-label">Province</label>
-        <select required name="province" class="form-control" v-model="formData.province">
+        <select :class="{'is-invalid': errors.province}" required name="province" class="form-control" v-model="formData.province">
           <option value="">Choose Province</option>
           <option value="alava">alava</option>
           <option value="albacete">albacete</option>
@@ -86,14 +87,20 @@
           <option value="zaragoza">zaragoza</option>
 
         </select>
+        <div class="invalid-feedback">{{ errors.province }}</div>
       </div>
+      <!-- Postal Code -->
       <div class="mb-3">
         <label for="postalCode" class="form-label">Postal Code</label>
-        <input type="number" class="form-control" id="postalCode" v-model="formData.postalCode">
+        <input type="number" :class="{'is-invalid': errors.postalCode}" class="form-control" id="postalCode" v-model="formData.postalCode">
+        <div class="invalid-feedback">{{ errors.postalCode }}</div>
       </div>
+      
+      <!-- Mobile -->
       <div class="mb-3">
-        <label for="pc" class="form-label">mobile</label>
-        <input type="number" class="form-control" id="pc" v-model="formData.mobile">
+        <label for="pc" class="form-label">Mobile</label>
+        <input type="number" :class="{'is-invalid': errors.mobile}" class="form-control" id="pc" v-model="formData.mobile">
+        <div class="invalid-feedback">{{ errors.mobile }}</div>
       </div>
       <button type="submit"
         class="tw-cursor-pointer tw-mt-7 tw-w-full tw-shadow tw-bg-purple-600 tw-hover:bg-purple-600 tw-focus:tw-shadow-outline tw-focus:tw-outline-none tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-mt-4">Place
@@ -120,11 +127,21 @@ export default {
         mobile: 0,
         postalCode: 0,
         province: ''
+      },
+      errors: {
+        address: '',
+        city: '',
+        mobile: '',
+        postalCode: '',
+        province: ''
       }
     };
   },
   methods: {
     async submitOrder() {
+      if (!this.validateForm()) {
+        return;
+      }
       try {
         // Step 1: Create the order
         // Retrieve user_id from localStorage
@@ -197,6 +214,46 @@ export default {
       } catch (error) {
         console.error('Error posting to payment entity:', error);
       }
+    },
+    validateForm() {
+      this.errors = {
+        address: '',
+        city: '',
+        mobile: '',
+        postalCode: '',
+        province: ''
+      };
+
+      let isValid = true;
+
+      if (!this.formData.address || this.formData.address.length <= 2) {
+        this.errors.address = 'Address is required.';
+        isValid = false;
+      }
+
+      if (!this.formData.city || this.formData.city.length <= 2) {
+        this.errors.city = 'City is required.';
+        isValid = false;
+      }
+
+      const mobileNumberPattern = /^\d{9}$/;
+      if (!this.formData.mobile || !mobileNumberPattern.test(this.formData.mobile)) {
+        this.errors.mobile = 'Mobile number must be exactly 9 digits.';
+        isValid = false;
+      }
+
+      const postalCodePattern = /^\d{5}$/;
+      if (!this.formData.postalCode || !postalCodePattern.test(this.formData.postalCode)) {
+        this.errors.postalCode = 'Postal code must be exactly 5 digits.';
+        isValid = false;
+      }
+
+      if (!this.formData.province) {
+        this.errors.province = 'Province is required.';
+        isValid = false;
+      }
+
+      return isValid;
     },
   },
   mounted() {
