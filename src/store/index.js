@@ -12,6 +12,7 @@ export default createStore({
     isAuthenticated: false,
     locale: 'en',
     username: null,
+    theme: 'light',
   },
   mutations: {
 
@@ -21,6 +22,9 @@ export default createStore({
       }
       if (localStorage.getItem('cartTotal')) {
         state.cartTotal = parseFloat(localStorage.getItem('cartTotal'))
+      }
+      if (localStorage.getItem('theme')) {
+        state.theme = localStorage.getItem('theme');
       }
       return true;
     },
@@ -71,6 +75,10 @@ export default createStore({
     changeLocale(state, locale) {
       state.locale = locale;
     },
+    setTheme(state, theme) {
+      state.theme = theme;
+      localStorage.setItem('theme', theme);
+    },
   },
   actions: {
     checkAuthentication({ commit }) {
@@ -91,6 +99,11 @@ export default createStore({
     },
     changeLocale({ commit }, locale) {
       commit('changeLocale', locale);
+    },
+    toggleTheme({ commit, state }) {
+      const newTheme = state.theme === 'light' ? 'dark' : 'light';
+      commit('setTheme', newTheme);
+      document.documentElement.setAttribute('data-theme', newTheme);
     },
     
   },
