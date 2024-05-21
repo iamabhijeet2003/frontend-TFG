@@ -129,6 +129,12 @@
                 <div>
                     <LanguageSwitcher />
                 </div>
+                <VaAvatar class="ms-6 mb-1" color="#fff">
+                <button @click="toggleTheme" >
+    <i v-if="theme === 'light'" class="bi bi-sun text-warning fs-3 fw-bold"></i>
+    <i v-else class="bi bi-moon text-dark fw-bold fs-3"></i>
+</button></VaAvatar>
+
             </div>
         </div>
     </nav>
@@ -136,7 +142,7 @@
 </template>
 <script>
 
-import { mapGetters, mapActions } from 'vuex'; // Import mapGetters from Vuex
+import { mapGetters, mapActions,mapState } from 'vuex'; // Import mapGetters from Vuex
 import ProductSearch from '@/components/product/ProductSearch'; // Import ProductSearch component
 import LanguageSwitcher from '@/components/utils/LanguageSwitcher.vue'
 import axios from 'axios';
@@ -157,10 +163,12 @@ export default {
     },
     computed: {
         ...mapGetters(['isLoggedIn']), // Map isLoggedIn getter
+        ...mapState(['theme']),
     },
     methods: {
         ...mapActions(['checkAuthentication']), // Map checkAuthentication action
         ...mapActions(['logout']),
+        ...mapActions(['toggleTheme']),
         handleLogout() {
             this.logout(); // Call the logout action when the logout button is clicked
         },
