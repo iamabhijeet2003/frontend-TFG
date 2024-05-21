@@ -14,7 +14,8 @@
     "my_orders": "My Orders",
     "my_profile": "My Profile",
     "cart": "Cart",
-    "contact":"Contact"
+    "contact":"Contact",
+    "latest":"Latest Products"
   },
   "banner": {
     "products": "Products",
