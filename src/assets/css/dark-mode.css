@@ -1,0 +1,19 @@
+:root { /* light mode */
+    --font-color: #000;
+    --link-color:#1C75B9;
+    --link-white-color:#fff;
+    --bg-color: rgb(243,243,243);
+}
+[data-theme="dark"] {
+    --font-color: #bdbab8;
+    --link-color:#0a86da;
+    --link-white-color:#bdbab8;
+    --bg-color: #333;
+}
+body
+{
+    color:#000;
+    color:var(--font-color);
+    background:rgb(243,243,243);
+    background:var(--bg-color);
+}
