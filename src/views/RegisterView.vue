@@ -125,7 +125,7 @@ export default {
   methods: {
     async registerUser() {
       console.log("Submitting registration form...");
-      console.log("Form Data:", this.formData);
+      //console.log("Form Data:", this.formData);
 
       try {
         const response = await axios.post(`${API_ROOT_URL}/users`, {
@@ -140,7 +140,7 @@ export default {
         }
         );
 
-        console.log('User registered successfully:', response.data);
+        //console.log('User registered successfully:', response.data);
         // Establecer el mensaje de éxito
         this.message = `User registered successfully`;
         this.messageClass = 'alert alert-success';
