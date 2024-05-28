@@ -125,7 +125,7 @@ export default {
   methods: {
     async registerUser() {
       console.log("Submitting registration form...");
-      console.log("Form Data:", this.formData);
+      //console.log("Form Data:", this.formData);
 
       try {
         const response = await axios.post(`${API_ROOT_URL}/users`, {

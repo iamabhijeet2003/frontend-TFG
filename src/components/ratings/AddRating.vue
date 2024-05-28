@@ -48,7 +48,7 @@ export default {
           },
         });
         console.log('Rating added successfully:', response.data);
-        // Optionally, emit an event or perform any other actions upon successful submission
+          //console.log("Rating added successfully");
       } catch (error) {
         console.error('Error adding rating:', error);
       }

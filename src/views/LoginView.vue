@@ -140,8 +140,8 @@ export default {
       e.preventDefault();
       this.loading = true;
       console.log("Submitting login form...");
-      console.log("Username:", this.email);
-      console.log("Password:", this.password);
+      //console.log("Username:", this.email);
+      //console.log("Password:", this.password);
 
       try {
         const response = await fetch(`${API_URL_USER}`, {
@@ -156,16 +156,16 @@ export default {
         });
 
 
-        console.log("Login response:", response);
+        //console.log("Login response:", response);
         // Modify subsequent API requests to include the JWT token
         if (response.ok) {
           const { token, user_id,username } = await response.json();
-          console.log("Token:", token);
+          //console.log("Token:", token);
 
           this.setUser(user_id);
           this.setToken(token);
           this.setUsername(username);
-          console.log("the current user id is: ", user_id)
+          //console.log("the current user id is: ", user_id)
           localStorage.setItem("token", token);
           localStorage.setItem("user_id", user_id);
           localStorage.setItem('username', username);
@@ -174,7 +174,7 @@ export default {
           //this.$router.push({ name: 'products' });
           //console.log("Login successful!");
           this.$router.push({ name: 'Home' });
-          console.log("Login successful!");
+          //console.log("Login successful!");
         } else {
 
           this.errorMessage = "Incorrect email or password";
