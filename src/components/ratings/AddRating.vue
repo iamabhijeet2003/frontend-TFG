@@ -47,8 +47,8 @@ export default {
             'Content-Type': 'application/ld+json'
           },
         });
-        //console.log('Rating added successfully:', response.data);
-          console.log("Rating added successfully");
+        console.log('Rating added successfully:', response.data);
+          //console.log("Rating added successfully");
       } catch (error) {
         console.error('Error adding rating:', error);
       }

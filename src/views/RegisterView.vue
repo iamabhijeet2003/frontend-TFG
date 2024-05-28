@@ -140,7 +140,7 @@ export default {
         }
         );
 
-        //console.log('User registered successfully:', response.data);
+        console.log('User registered successfully:', response.data);
         // Establecer el mensaje de éxito
         this.message = `User registered successfully`;
         this.messageClass = 'alert alert-success';
