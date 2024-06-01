@@ -17,6 +17,10 @@ El TFG esta repartido en 3 repositorios diferentes.
 - Uso de Axios para realizar peticiones HTTP.
 - Notificaciones y mensajes de toast con Toastify.
 
+## Despliegue
+Este aplicación esta desplegada en Vercel. Puedes ver la pagina en el siguiente enlace:
+[DEMO](https://proyecto-final-abhi.vercel.app)
+
 ## Requisitos
 
 - Node.js >= 20.x
