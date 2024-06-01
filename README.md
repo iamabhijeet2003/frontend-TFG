@@ -1,6 +1,10 @@
 # Frontend - Tienda Online
 
 Este repositorio contiene el código fuente del frontend de la Tienda Online de mi TFG(Trabajo de Fin de Grado) de Ciclo Superior de DAW(Desarrollo de aplicaciones web). La aplicación está desarrollada con Vue.js y otras tecnologías modernas para ofrecer una experiencia de usuario fluida y atractiva.
+El TFG esta repartido en 3 repositorios diferentes.
+1. [Frontend - Tienda (Este Repositorio)](https://github.com/iamabhijeet2003/frontend-TFG.git)
+2. [Frontend - Admin Panel](https://github.com/iamabhijeet2003/admin-TFG.git)
+3. [Backend - API](https://github.com/iamabhijeet2003/backend-TFG.git)
 
 ## Características
 
@@ -10,10 +14,8 @@ Este repositorio contiene el código fuente del frontend de la Tienda Online de 
 - Validación de formularios con VeeValidate.
 - Autocompletado de direcciones con Google Maps API.
 - Integración con la API de Stripe para procesamiento de pagos.
-- Visualización de gráficos con ApexCharts (para el panel de administración).
 - Uso de Axios para realizar peticiones HTTP.
 - Notificaciones y mensajes de toast con Toastify.
-- Medidor de fuerza de contraseñas con Vue Password Meter.
 
 ## Requisitos
 
@@ -58,10 +60,8 @@ frontend-tienda-online/
 │   ├── assets/              # Recursos estáticos (imágenes, fuentes, etc.)
 │   ├── components/          # Componentes de Vue reutilizables
 │   ├── layouts/             # Componentes de diseño/layout
-│   ├── pages/               # Páginas de la aplicación
 │   ├── router/              # Configuración de rutas
 │   ├── store/               # Gestión de estado con Vuex
-│   ├── styles/              # Archivos de estilos (CSS, SCSS)
 │   ├── utils/               # Utilidades y helpers
 │   ├── views/               # Vistas de la aplicación
 │   ├── App.vue              # Componente raíz de la aplicación
