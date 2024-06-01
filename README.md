@@ -1,5 +1,7 @@
 # Frontend - Tienda Online
 
+[![DOI](https://zenodo.org/badge/768320912.svg)](https://zenodo.org/doi/10.5281/zenodo.11414157)
+
 Este repositorio contiene el código fuente del frontend de la Tienda Online de mi TFG(Trabajo de Fin de Grado) de Ciclo Superior de DAW(Desarrollo de aplicaciones web). La aplicación está desarrollada con Vue.js y otras tecnologías modernas para ofrecer una experiencia de usuario fluida y atractiva.
 El TFG esta repartido en 3 repositorios diferentes.
 1. [Frontend - Tienda (Este Repositorio)](https://github.com/iamabhijeet2003/frontend-TFG.git)
