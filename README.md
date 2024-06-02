@@ -32,8 +32,9 @@ El TFG esta repartido en 3 repositorios diferentes.
    ![home3](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/e1dc1615-a023-4225-833d-de8a78e3b3e1)
    ![home4](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/eb2d1ee8-00d3-419c-b47d-09c28e9529f4)
    ![home5](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/91f4a82c-f42a-4490-a508-e5fec6571b7f)
-      
-   
+   ![faqs](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/1dbd93cf-8c48-4259-9fb9-86f72bce82fe)
+   ![footer](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/190b0f11-82e7-44e9-946e-a1260165e1bf)
+
    </details>
 
 <details>
