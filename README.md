@@ -17,6 +17,39 @@ El TFG esta repartido en 3 repositorios diferentes.
 2. [Frontend - Admin Panel](https://github.com/iamabhijeet2003/admin-TFG.git)
 3. [Backend - API](https://github.com/iamabhijeet2003/backend-TFG.git)
 
+<div>
+   
+   ![home1](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/3c7cb003-d0b1-486b-be64-943fbf5894ec)
+
+   <details>
+      <summary>More Images</summary>
+      <div>
+
+   <details>
+         <summary>Home Page</summary>
+      
+   ![home2](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/2ed765de-4090-4c01-81ae-18fabd64a910)
+   ![home3](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/e1dc1615-a023-4225-833d-de8a78e3b3e1)
+   ![home4](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/eb2d1ee8-00d3-419c-b47d-09c28e9529f4)
+   ![home5](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/91f4a82c-f42a-4490-a508-e5fec6571b7f)
+      
+   
+   </details>
+
+<details>
+         <summary>Newsletter</summary>
+      
+![newsletter](https://github.com/iamabhijeet2003/frontend-TFG/assets/116766794/eb462510-d2de-417f-9f3f-ae033f9ca6df)
+
+      
+   
+   </details>
+
+   </div>
+
+   </details>
+</div>
+
 ## Características
 
 - Navegación fluida con Vue Router.
