@@ -93,7 +93,7 @@ export default {
     async fetchAppleProducts(page = 1) {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`${API_ROOT_URL}/products?category=1&page=${page}`, {
+        const response = await axios.get(`${API_ROOT_URL}/products?brand=1&page=${page}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
