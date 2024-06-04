@@ -66,6 +66,17 @@
                 </router-link>
               </h3>
             </div>
+            <div class="tw-flex tw-flex-col tw-mt-4 tw-items-center tw-justify-center tw-text-sm">
+              <h3 class="tw-dark:text-gray-300">
+                <a href="https://admin-proyecto-final-abhi.vercel.app/login"
+                  class="tw-group tw-text-blue-400 tw-transition-all tw-duration-100 tw-ease-in-out">
+                  <span
+                    class="tw-bg-left-bottom tw-bg-gradient-to-r tw-from-blue-400 tw-to-blue-400 tw-bg-[length:0%_2px] tw-bg-no-repeat tw-group-hover:tw-bg-[length:100%_2px] tw-transition-all tw-duration-500 tw-ease-out">
+                    Admin area
+                  </span>
+                </a>
+              </h3>
+            </div>
 
             <!-- Third Party Authentication Options -->
             <div id="third-party-auth" class="tw-flex tw-items-center tw-justify-center tw-mt-5 tw-flex-wrap">
