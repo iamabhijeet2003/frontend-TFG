@@ -64,7 +64,7 @@
       async fetchSamsungProducts(page = 1) {
         try {
           const token = localStorage.getItem('token');
-          const response = await axios.get(`${API_ROOT_URL}/products?category=2&page=${page}`, {
+          const response = await axios.get(`${API_ROOT_URL}/products?brand=2&page=${page}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
